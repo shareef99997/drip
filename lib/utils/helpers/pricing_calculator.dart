@@ -42,3 +42,5 @@ class TPricingCalculator {
     return cart.items.map((e) => e.price).fold(0, (previousPrice, currentPrice) => previousPrice + (currentPrice ?? 0));
   }
 }
+
+

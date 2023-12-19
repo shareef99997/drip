@@ -1,1 +1,3 @@
-// TODO Implement this library.
+class TLoaders {
+  static void warningSnackBar({required String title}) {}
+}
