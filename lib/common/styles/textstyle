@@ -1,6 +1,0 @@
-final dark = THelperFunctions.isDarkMode(context);
-
-dark? TTextTheme.darkTextTheme.bodyLarge :TTextTheme.lightTextTheme.bodyLarge,
-
-Get.offAll(); //remove all previos pages
-

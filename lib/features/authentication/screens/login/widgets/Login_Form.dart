@@ -1,11 +1,13 @@
-import 'package:drip/utils/constants/colors.dart';
 import 'package:drip/utils/constants/sizes.dart';
 import 'package:drip/utils/theme/widget_themes/text_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
+import '../../signup/signup.dart';
 
 class FForm extends StatelessWidget {
   const FForm({super.key});
@@ -104,7 +106,7 @@ class FForm extends StatelessWidget {
                 width: double.infinity,
                 child: OutlinedButton(
                   onPressed: () {
-                    // Todo
+                    Get.to(() => SignupScreen());
                   },
                   child: Text(
                     TTexts.createAccount,
