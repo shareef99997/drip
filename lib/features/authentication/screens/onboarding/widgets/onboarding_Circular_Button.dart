@@ -1,9 +1,9 @@
 import 'package:drip/features/authentication/controllers/onboarding_controller.dart';
 import 'package:drip/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
-import '../../../../utils/constants/colors.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/device/device_utility.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/device/device_utility.dart';
 
 
 

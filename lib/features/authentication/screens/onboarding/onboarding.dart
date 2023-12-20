@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:drip/features/authentication/controllers/onboarding_controller.dart';
-import 'package:drip/features/authentication/screens/widgets/Onboarding_Dot_Navigation.dart';
-import 'package:drip/features/authentication/screens/widgets/onboarding_Circular_Button.dart';
-import 'package:drip/features/authentication/screens/widgets/onboarding_page.dart';
+import 'package:drip/features/authentication/screens/onboarding/widgets/Onboarding_Dot_Navigation.dart';
+import 'package:drip/features/authentication/screens/onboarding/widgets/onboarding_Circular_Button.dart';
+import 'package:drip/features/authentication/screens/onboarding/widgets/onboarding_page.dart';
 import 'package:drip/utils/constants/image_strings.dart';
 import 'package:drip/utils/constants/text_strings.dart';
 import 'package:flutter/material.dart';
@@ -31,16 +31,12 @@ class OnBoardingScreen extends StatelessWidget {
               OnBoardingPage(image: TImages.onBoardingImage3, title: TTexts.onBoardingTitle3, subTitle:TTexts.onBoardingSubTitle3,),
             ],
           ),
-          
           ///Skip Button
           OnBoardingSkip(),
-          
           ///Dot Navigation SmoothPageIndicator 
           OnBoardDotNavigation(),
-           
           ///Circular Button
           Onboarding_button()
-
         ],
       ),
     );

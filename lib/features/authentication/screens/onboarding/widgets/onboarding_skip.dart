@@ -2,9 +2,9 @@ import 'package:drip/features/authentication/controllers/onboarding_controller.d
 import 'package:drip/utils/constants/text_strings.dart';
 import 'package:drip/utils/theme/widget_themes/text_theme.dart';
 import 'package:flutter/material.dart';
-import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/device/device_utility.dart';
-import '../../../../utils/helpers/helper_functions.dart';
+import '../../../../../utils/constants/sizes.dart';
+import '../../../../../utils/device/device_utility.dart';
+import '../../../../../utils/helpers/helper_functions.dart';
 
 
 class OnBoardingSkip extends StatelessWidget {

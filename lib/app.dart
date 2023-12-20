@@ -1,4 +1,4 @@
-import 'package:drip/features/authentication/screens/onboarding.dart';
+import 'package:drip/features/authentication/screens/onboarding/onboarding.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:drip/utils/constants/text_strings.dart';
