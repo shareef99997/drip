@@ -1,4 +1,4 @@
-// import 'package:cwt_ecommerce_ui_kit/common/widgets/texts/t_brand_title_text.dart';
+// import 'package:drip/common/widgets/texts/t_brand_title_text.dart';
 // import 'package:flutter/material.dart';
 // import 'package:iconsax/iconsax.dart';
 

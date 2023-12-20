@@ -1,4 +1,4 @@
-// import 'package:cwt_ecommerce_ui_kit/features/shop/models/cart_item_model.dart';
+// import 'package:drip/features/shop/models/cart_item_model.dart';
 // import 'package:flutter/material.dart';
 
 // import '../../../../utils/constants/colors.dart';

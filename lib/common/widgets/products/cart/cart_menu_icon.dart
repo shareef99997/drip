@@ -1,4 +1,4 @@
-// import 'package:cwt_ecommerce_ui_kit/utils/constants/sizes.dart';
+// import 'package:drip/utils/constants/sizes.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 // import 'package:iconsax/iconsax.dart';

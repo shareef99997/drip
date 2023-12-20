@@ -1,4 +1,4 @@
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/product_reviews/widgets/rating_progress_indicator.dart';
+// import 'package:drip/features/shop/screens/product_reviews/widgets/rating_progress_indicator.dart';
 // import 'package:flutter/material.dart';
 
 // class TOverallProductRating extends StatelessWidget {

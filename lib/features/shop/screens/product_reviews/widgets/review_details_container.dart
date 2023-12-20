@@ -1,6 +1,6 @@
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/product_reviews/widgets/rating_star.dart';
-// import 'package:cwt_ecommerce_ui_kit/utils/constants/colors.dart';
-// import 'package:cwt_ecommerce_ui_kit/utils/helpers/helper_functions.dart';
+// import 'package:drip/features/shop/screens/product_reviews/widgets/rating_star.dart';
+// import 'package:drip/utils/constants/colors.dart';
+// import 'package:drip/utils/helpers/helper_functions.dart';
 // import 'package:flutter/material.dart';
 // import 'package:readmore/readmore.dart';
 

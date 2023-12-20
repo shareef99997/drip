@@ -1,6 +1,6 @@
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/checkout/widgets/billing_address_section.dart';
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/checkout/widgets/billing_payment_section.dart';
-// import 'package:cwt_ecommerce_ui_kit/home_menu.dart';
+// import 'package:drip/features/shop/screens/checkout/widgets/billing_address_section.dart';
+// import 'package:drip/features/shop/screens/checkout/widgets/billing_payment_section.dart';
+// import 'package:drip/home_menu.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 

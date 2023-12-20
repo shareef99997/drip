@@ -1,4 +1,4 @@
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/order/widgets/orders_list.dart';
+// import 'package:drip/features/shop/screens/order/widgets/orders_list.dart';
 // import 'package:flutter/material.dart';
 
 // import '../../../../common/widgets/appbar/appbar.dart';

@@ -1,4 +1,4 @@
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/store/widgets/category_tab.dart';
+// import 'package:drip/features/shop/screens/store/widgets/category_tab.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 

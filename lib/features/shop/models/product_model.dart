@@ -1,5 +1,5 @@
-// import 'package:cwt_ecommerce_ui_kit/features/shop/models/product_attribute_model.dart';
-// import 'package:cwt_ecommerce_ui_kit/features/shop/models/product_variation_model.dart';
+// import 'package:drip/features/shop/models/product_attribute_model.dart';
+// import 'package:drip/features/shop/models/product_variation_model.dart';
 // import 'brand_model.dart';
 
 // class ProductModel {

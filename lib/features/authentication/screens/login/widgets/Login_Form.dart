@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:iconsax/iconsax.dart';
 
+import '../../../../../home_menu.dart';
 import '../../../../../utils/constants/text_strings.dart';
 import '../../../../../utils/helpers/helper_functions.dart';
 import '../../signup/signup.dart';
@@ -87,9 +88,7 @@ class FForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () {
-                    // Todo
-                  },
+                  onPressed:() => Get.offAll(() => const HomeMenu()),
                   child: Text(
                     TTexts.signIn,
                     style: dark

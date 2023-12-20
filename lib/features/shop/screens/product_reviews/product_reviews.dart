@@ -1,6 +1,6 @@
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/product_reviews/widgets/progress_indicator_and_rating.dart';
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/product_reviews/widgets/rating_star.dart';
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/product_reviews/widgets/review_details_container.dart';
+// import 'package:drip/features/shop/screens/product_reviews/widgets/progress_indicator_and_rating.dart';
+// import 'package:drip/features/shop/screens/product_reviews/widgets/rating_star.dart';
+// import 'package:drip/features/shop/screens/product_reviews/widgets/review_details_container.dart';
 // import 'package:flutter/material.dart';
 
 // import '../../../../common/widgets/appbar/appbar.dart';

@@ -1,7 +1,7 @@
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/product_detail/widgets/product_attributes.dart';
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/product_detail/widgets/product_detail_image_slider.dart';
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/product_detail/widgets/product_meta_data.dart';
-// import 'package:cwt_ecommerce_ui_kit/features/shop/screens/product_detail/widgets/rating_share_widget.dart';
+// import 'package:drip/features/shop/screens/product_detail/widgets/product_attributes.dart';
+// import 'package:drip/features/shop/screens/product_detail/widgets/product_detail_image_slider.dart';
+// import 'package:drip/features/shop/screens/product_detail/widgets/product_meta_data.dart';
+// import 'package:drip/features/shop/screens/product_detail/widgets/rating_share_widget.dart';
 // import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 // import 'package:iconsax/iconsax.dart';
