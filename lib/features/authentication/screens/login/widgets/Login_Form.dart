@@ -1,3 +1,4 @@
+import 'package:drip/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:drip/utils/constants/sizes.dart';
 import 'package:drip/utils/theme/widget_themes/text_theme.dart';
 import 'package:flutter/material.dart';
@@ -67,7 +68,7 @@ class FForm extends StatelessWidget {
                   /// Forget Passowrd ?
                   TextButton(
                     onPressed: () {
-                      //Todo
+                      Get.to(() => ForgetPassword());
                     },
                     child: Text(
                       TTexts.forgetPassword,
