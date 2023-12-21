@@ -1,20 +1,20 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// import 'curved_edges.dart';
+import 'curved_edges.dart';
 
-// class TCurvedEdgesWidget extends StatelessWidget {
-//   const TCurvedEdgesWidget({
-//     super.key,
-//     required this.child,
-//   });
+class TCurvedEdgesWidget extends StatelessWidget {
+  const TCurvedEdgesWidget({
+    super.key,
+    required this.child,
+  });
 
-//   final Widget child;
+  final Widget child;
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return ClipPath(
-//       clipper: TCustomCurvedEdges(),
-//       child: child,
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return ClipPath(
+      clipper: TCustomCurvedEdges(),
+      child: child,
+    );
+  }
+}

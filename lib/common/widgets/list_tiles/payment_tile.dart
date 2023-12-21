@@ -1,10 +1,10 @@
-// import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 
-// class TPaymentTile extends StatelessWidget {
-//   const TPaymentTile({super.key});
+class TPaymentTile extends StatelessWidget {
+  const TPaymentTile({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return const ListTile();
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return const ListTile();
+  }
+}

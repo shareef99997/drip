@@ -44,6 +44,5 @@ class AppScreenController extends GetxController {
 
   final Rx<int> selectedMenu = 0.obs;
 
-  // final screens = [const HomeScreen(), const StoreScreen(), const FavouriteScreen(), const SettingsScreen()];
-   final screens = [HomeScreen(), Container(color: Colors.green,), Container(color: Colors.red,), Container(color: Colors.purple,)];
+   final screens = [const HomeScreen(), const StoreScreen(), const FavouriteScreen(), const SettingsScreen()];
 }
