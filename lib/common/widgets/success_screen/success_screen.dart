@@ -16,22 +16,17 @@ class SuccessScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.only(
-            top: TSizes.appBarHeight,
-            left: TSizes.defaultSpace,
-            bottom: TSizes.defaultSpace,
-            right: TSizes.defaultSpace,
-          ) ,
+          padding: TSpacingStyle.paddingWithAppBarHeight * 2,
           child: Column(
             children: [
               /// Image
-              Image(image: AssetImage(image), width: THelperFunctions.screenWidth() * 0.5),
+              Image(image: AssetImage(image), width: THelperFunctions.screenWidth() * 0.6),
               const SizedBox(height: TSizes.spaceBtwSections),
 
               /// Title & SubTitle
               Text(title, style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
               const SizedBox(height: TSizes.spaceBtwItems),
-              Text(subTitle, style: Theme.of(context).textTheme.bodySmall, textAlign: TextAlign.center),
+              Text(subTitle, style: Theme.of(context).textTheme.labelMedium, textAlign: TextAlign.center),
               const SizedBox(height: TSizes.spaceBtwSections),
 
               /// Buttons

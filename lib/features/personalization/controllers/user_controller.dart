@@ -1,6 +1,6 @@
-// import 'package:get/get.dart';
+import 'package:get/get.dart';
 
-// class UserController extends GetxController{
-//   static UserController get instance => Get.find();
+class UserController extends GetxController{
+  static UserController get instance => Get.find();
 
-// }
+}

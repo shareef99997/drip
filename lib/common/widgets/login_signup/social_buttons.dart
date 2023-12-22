@@ -17,8 +17,8 @@ class TSocialButtons extends StatelessWidget {
           child: IconButton(
             onPressed: () {},
             icon: const Image(
-              width: TSizes.iconMd+20,
-              height: TSizes.iconMd+20,
+              width: TSizes.iconMd,
+              height: TSizes.iconMd,
               image: AssetImage(TImages.google),
             ),
           ),
@@ -29,8 +29,8 @@ class TSocialButtons extends StatelessWidget {
           child: IconButton(
             onPressed: () {},
             icon: const Image(
-              width: TSizes.iconMd+20,
-              height: TSizes.iconMd+20,
+              width: TSizes.iconMd,
+              height: TSizes.iconMd,
               image: AssetImage(TImages.facebook),
             ),
           ),
