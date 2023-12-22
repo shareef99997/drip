@@ -1,3 +1,4 @@
+import 'package:drip/data/repositories/repositories.authentication/authentication_repository.dart';
 import 'package:drip/features/personalization/controllers/address_controller.dart';
 import 'package:drip/features/shop/controllers/brand_controller.dart';
 import 'package:drip/features/shop/controllers/cart_controller.dart';
@@ -8,28 +9,29 @@ import 'package:drip/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:drip/app.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:get/get_core/src/get_main.dart';
-
 Future<void> main() async {
-
+  //Init Get 
   Get_init();
+
+  // Widgets Binding 
+  final WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  // GetX Local Storage
+  await GetStorage.init();
+
+  // Todo: Await Native Splash
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
+  // Init Firebase
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform)
-  // .then(
-  //   (FirebaseApp value) => Get.put(AuthenticationRepository))
-  ;
+   .then((FirebaseApp value) => Get.put(AuthenticationRepository()));
   
-
-  //Todo: Add Widgets Binding
-  //Todo: Init Local Storage
-  //Todo: Await Native Splash
-  
-  //Todo: Initialize Authentication 
-  
-  runApp(const App());
+  runApp(App());
 }
-
-
 
 
 

@@ -1,4 +1,4 @@
-import 'package:drip/features/authentication/screens/onboarding/onboarding.dart';
+import 'package:drip/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 import 'package:drip/utils/constants/text_strings.dart';
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
       darkTheme: TAppTheme.darkTheme,
       debugShowCheckedModeBanner: false,
       // initialBinding: GeneralBindings(),
-      home: OnBoardingScreen()
+      home: Scaffold(backgroundColor: TColors.primary, body: Center(child: CircularProgressIndicator(color: Colors.white)))
     );
   }
 }
