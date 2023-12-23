@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'package:drip/features/authentication/controllers/onboarding_controller.dart';
+import 'package:drip/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:drip/features/authentication/screens/onboarding/widgets/Onboarding_Dot_Navigation.dart';
 import 'package:drip/features/authentication/screens/onboarding/widgets/onboarding_Circular_Button.dart';
 import 'package:drip/features/authentication/screens/onboarding/widgets/onboarding_page.dart';

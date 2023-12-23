@@ -1,3 +1,4 @@
+import 'package:drip/bindings/general_bindings.dart';
 import 'package:drip/utils/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
@@ -14,8 +15,17 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
+      builder: (
+        BuildContext context, Widget? child) {
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                textScaleFactor: 1.1, // Set the desired text scale factor here
+              ),
+              child: child!,
+            );
+        },
+      initialBinding: GeneralBindings(),
       debugShowCheckedModeBanner: false,
-      // initialBinding: GeneralBindings(),
       home: Scaffold(backgroundColor: TColors.primary, body: Center(child: CircularProgressIndicator(color: Colors.white)))
     );
   }

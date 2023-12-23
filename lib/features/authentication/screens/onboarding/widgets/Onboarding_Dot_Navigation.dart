@@ -1,4 +1,4 @@
-import 'package:drip/features/authentication/controllers/onboarding_controller.dart';
+import 'package:drip/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:drip/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -18,7 +18,7 @@ class OnBoardDotNavigation extends StatelessWidget {
     final dark = THelperFunctions.isDarkMode(context);
     final controller = OnBoardingController.Instance;
     return Positioned(
-      bottom:TDeviceUtils.getBottomNavigationBarHeight()+25 ,
+      bottom:TDeviceUtils.getBottomNavigationBarHeight() ,
       left: TSizes.defaultSpace,
       
       child : SmoothPageIndicator(

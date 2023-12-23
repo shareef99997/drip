@@ -1,3 +1,6 @@
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../../utils/formatters/formatter.dart';
 import '../../shop/models/cart_model.dart';
 import 'address_model.dart';
@@ -16,17 +19,19 @@ class UserModel {
   final List<AddressModel>? addresses;
 
   /// Constructor for UserModel.
-  UserModel({
-    required this.id,
-    required this.firstName,
-    required this.lastName,
-    required this.username,
-    required this.email,
-    required this.phoneNumber,
-    required this.profilePicture,
-    this.cart,
-    this.addresses,
-  });
+  UserModel(
+    {
+      required this.id,
+      required this.firstName,
+      required this.lastName,
+      required this.username,
+      required this.email,
+      required this.phoneNumber,
+      required this.profilePicture,
+      this.cart,
+      this.addresses,
+    }
+  );
 
   /// Helper function to get the full name.
   String get fullName => '$firstName $lastName';
@@ -49,13 +54,52 @@ class UserModel {
   }
 
   /// Static function to create an empty user model.
-  static UserModel empty() => UserModel(
-        id: '',
-        firstName: '',
-        lastName: '',
-        username: '',
-        email: '',
-        phoneNumber: '',
-        profilePicture: '',
-      );
+  static UserModel empty() => 
+    UserModel(
+      id: '',
+      firstName: '',
+      lastName: '',
+      username: '',
+      email: '',
+      phoneNumber: '',
+      profilePicture: '',
+    );
+
+   Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'firstName': firstName,
+      'lastName': lastName,
+      'username': username,
+      'email': email,
+      'phoneNumber': phoneNumber,
+      'profilePicture': profilePicture,
+    };
+   }
+
+factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+  if (document.data() != null) {
+    final data = document.data()!;
+    return UserModel(
+      id: document.id,
+      firstName: data['firstName'] ?? '',
+      lastName: data['lastName'] ?? '',
+      username: data['username'] ?? '',
+      email: data['email'] ?? '',
+      phoneNumber: data['phoneNumber'] ?? '',
+      profilePicture: data['profilePicture'] ?? '',
+    );
+  }
+
+  // Add a return statement for the case where document.data() is null
+  return UserModel(
+    id: '',
+    firstName: '',
+    lastName: '',
+    username: '',
+    email: '',
+    phoneNumber: '',
+    profilePicture: '',
+  );
+}
 }

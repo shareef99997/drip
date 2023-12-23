@@ -17,7 +17,7 @@ class THeaderCategories extends StatelessWidget {
     final controller = Get.put(HomeController());
     final categories = controller.getFeaturedCategories();
     return Padding(
-      padding: const EdgeInsets.only(left: TSizes.defaultSpace),
+      padding: const EdgeInsets.only(left: TSizes.defaultSpace,),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -26,8 +26,8 @@ class THeaderCategories extends StatelessWidget {
           const SizedBox(height: TSizes.spaceBtwItems),
 
           /// -- Categories
-          SizedBox(
-            height: 80,
+          Container(
+            height: 100,
             child: ListView.builder(
               shrinkWrap: true,
               itemCount: categories.length,

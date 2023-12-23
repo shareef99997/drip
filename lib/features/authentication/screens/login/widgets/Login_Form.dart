@@ -60,8 +60,8 @@ class FForm extends StatelessWidget {
                       Text(
                         TTexts.rememberMe,
                         style: dark
-                          ? TTextTheme.darkTextTheme.displaySmall
-                          : TTextTheme.lightTextTheme.displaySmall,
+                          ? TTextTheme.darkTextTheme.labelLarge
+                          : TTextTheme.lightTextTheme.labelLarge,
                       )
                     ],
                   ),

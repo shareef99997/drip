@@ -1,4 +1,4 @@
-import 'package:drip/features/authentication/controllers/onboarding_controller.dart';
+import 'package:drip/features/authentication/controllers/onboarding/onboarding_controller.dart';
 import 'package:drip/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 import '../../../../../utils/constants/colors.dart';
@@ -18,7 +18,7 @@ class Onboarding_button extends StatelessWidget {
   Widget build(BuildContext context) {  
     final dark = THelperFunctions.isDarkMode(context);
     return Positioned(
-      bottom:TDeviceUtils.getBottomNavigationBarHeight()+10 ,
+      bottom:TDeviceUtils.getBottomNavigationBarHeight()-20 ,
       right: TSizes.defaultSpace,
       child: ElevatedButton(
         onPressed: () => OnBoardingController.Instance.nextPage(),

@@ -1,5 +1,14 @@
 
 class TValidator {
+
+  static String? validateEmptyText(String? fieldName, String? value) {
+    if (value == null || value.isEmpty) {
+      return '$fieldName is required.';
+    }
+    
+    return null;
+  }
+
   static String? validateEmail(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email is required.';
@@ -25,20 +34,11 @@ class TValidator {
       return 'Password must be at least 6 characters long.';
     }
 
-    // Check for uppercase letters
-    if (!value.contains(RegExp(r'[A-Z]'))) {
-      return 'Password must contain at least one uppercase letter.';
-    }
-
     // Check for numbers
     if (!value.contains(RegExp(r'[0-9]'))) {
       return 'Password must contain at least one number.';
     }
 
-    // Check for special characters
-    if (!value.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]'))) {
-      return 'Password must contain at least one special character.';
-    }
 
     return null;
   }
@@ -58,5 +58,4 @@ class TValidator {
     return null;
   }
 
-// Add more custom validators as needed for your specific requirements.
 }

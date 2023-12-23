@@ -35,7 +35,7 @@ class TProductCardVertical extends StatelessWidget {
       /// Container with side paddings, color, edges, radius and shadow.
       child: Container(
         width: 180,
-        padding: const EdgeInsets.all(1),
+        padding: const EdgeInsets.all(5),
         decoration: BoxDecoration(
           boxShadow: [TShadowStyle.verticalProductShadow],
           borderRadius: BorderRadius.circular(TSizes.productImageRadius),
@@ -76,7 +76,7 @@ class TProductCardVertical extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: TSizes.spaceBtwItems / 2),
+            Spacer(),
 
             /// -- Details
             Padding(
@@ -84,8 +84,8 @@ class TProductCardVertical extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TProductTitleText(title: product.title, smallSize: true),
-                  const SizedBox(height: TSizes.spaceBtwItems / 2),
+                  TProductTitleText(title: product.title, smallSize: true,maxLines: 1,),
+                  const SizedBox(height: TSizes.spaceBtwItems / 3),
                   TBrandTitleWithVerifiedIcon(title: product.brand!.name, brandTextSize: TextSizes.small),
                 ],
               ),
@@ -94,7 +94,7 @@ class TProductCardVertical extends StatelessWidget {
             /// Price & Add to cart button
             /// Use Spacer() to utilize all the space and set the price and cart button at the bottom.
             /// This usually happens when Product title is in single line or 2 lines (Max)
-            const Spacer(),
+            Spacer(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
