@@ -7,7 +7,6 @@ import 'package:drip/utils/constants/image_strings.dart';
 import 'package:drip/utils/helpers/network_manager.dart';
 import 'package:drip/utils/popups/full_screen_loader.dart';
 import 'package:drip/utils/popups/loaders.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -38,13 +37,14 @@ class SignupController extends GetxController {
         TFullScreenLoader.stopLoading();
         return;
       }  
-
-      // Form Validation 
-      if (!signupFormKey.currentState!.validate()){
-       
-        return;
-      }  
       
+      // Form Validation 
+      if (!signupFormKey.currentState!.validate()) {
+          TFullScreenLoader.stopLoading();
+          return;
+      }
+        
+
       // privacyPolicy Validation
       if (!privacyPolicy.value) {
         TLoaders.warningSnackBar(
@@ -70,27 +70,19 @@ class SignupController extends GetxController {
 
       final userRepository = Get.put(UserRepository()); 
       await  userRepository.saveUserRecord(newUser);
-      
-      TLoaders.successSnackBar(title: 'Congratulations 😄',message: 'Your account has been creeated! Verify email to continue.');
 
       TFullScreenLoader.stopLoading();
-      // Print statements for debugging
-      print(Get.routing.current);
-      print('Before navigation to VerifyEmailScreen');
-      Get.to(() => const VerifyEmailScreen());
-      print('After navigation to VerifyEmailScreen');
-      print(Get.routing.current);
-      
+
+      TLoaders.successSnackBar(title: 'Great!',message: 'Your account has been creeated! Verify email to continue.');
+
+      Get.to(() => VerifyEmailScreen(email: email.text.trim()));
+
     } catch (e) {
-      
+      TFullScreenLoader.stopLoading();
+
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
       
-    } finally {
-      // Remove Loder
-      
-
-    }
-
+    } 
   }
   
 }

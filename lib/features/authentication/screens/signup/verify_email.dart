@@ -1,3 +1,5 @@
+import 'package:drip/data/repositories/authentication/authentication_repository.dart';
+import 'package:drip/features/authentication/controllers/signup/verify_email_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -10,16 +12,19 @@ import '../../../../utils/helpers/helper_functions.dart';
 import '../login/login.dart';
 
 class VerifyEmailScreen extends StatelessWidget {
-  const VerifyEmailScreen({super.key});
+  const VerifyEmailScreen({super.key, this.email});
+  
+  final String? email;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(VerifyEmailController());
     return Scaffold(
       /// Appbar close icon will first Logout the user & then redirect back to Login Screen()
       /// Reason: We will store the data when user enters the Register Button on Previous screen.
       /// Whenever the user opens the app, we will check if email is verified or not.
       /// If not verified we will always show this Verification screen.
-      appBar: TAppBar(actions: [IconButton(onPressed: () => Get.offAll(const LoginScreen()), icon: const Icon(CupertinoIcons.clear))]),
+      appBar: TAppBar(actions: [IconButton(onPressed: () => AuthenticationRepository.instance.logout(), icon: const Icon(CupertinoIcons.clear))]),
       body: SingleChildScrollView(
         // Padding to Give Default Equal Space on all sides in all screens.
         child: Padding(
@@ -29,14 +34,14 @@ class VerifyEmailScreen extends StatelessWidget {
               /// Image
               Image(
                 image: const AssetImage(TImages.deliveredEmailIllustration),
-                width: THelperFunctions.screenWidth() * 0.6,
+                width: THelperFunctions.screenWidth() * 0.45,
               ),
               const SizedBox(height: TSizes.spaceBtwSections),
 
               /// Title & SubTitle
               Text(TTexts.confirmEmail, style: Theme.of(context).textTheme.headlineMedium, textAlign: TextAlign.center),
               const SizedBox(height: TSizes.spaceBtwItems),
-              Text('support@codingwitht.com', style: Theme.of(context).textTheme.labelLarge, textAlign: TextAlign.center),
+              Text(email ?? '', style: Theme.of(context).textTheme.labelLarge, textAlign: TextAlign.center),
               const SizedBox(height: TSizes.spaceBtwItems),
               Text(TTexts.confirmEmailSubTitle, style: Theme.of(context).textTheme.bodySmall, textAlign: TextAlign.center),
               const SizedBox(height: TSizes.spaceBtwSections),
@@ -45,19 +50,11 @@ class VerifyEmailScreen extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(
-                          /// Success Screen
-                          () => SuccessScreen(
-                            image: TImages.staticSuccessIllustration,
-                            title: TTexts.yourAccountCreatedTitle,
-                            subTitle: TTexts.yourAccountCreatedSubTitle,
-                            onPressed: () => Get.offAll(() => const LoginScreen()),
-                          ),
-                        ),
+                    onPressed: () => controller.checkEmailVerificationStatus(),
                     child: const Text(TTexts.tContinue)),
               ),
               const SizedBox(height: TSizes.spaceBtwItems),
-              SizedBox(width: double.infinity, child: TextButton(onPressed: () {}, child: const Text(TTexts.resendEmail))),
+              SizedBox(width: double.infinity, child: TextButton(onPressed: () => controller.sendEmailVerification(), child: const Text(TTexts.resendEmail))),
             ],
           ),
         ),

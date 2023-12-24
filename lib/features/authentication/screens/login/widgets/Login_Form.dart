@@ -1,6 +1,8 @@
+import 'package:drip/features/authentication/controllers/login/login_controller.dart';
 import 'package:drip/features/authentication/screens/password_configuration/forget_password.dart';
 import 'package:drip/utils/constants/sizes.dart';
 import 'package:drip/utils/theme/widget_themes/text_theme.dart';
+import 'package:drip/utils/validators/validation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -16,15 +18,21 @@ class FForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(LoginController());
+
+
     final dark = THelperFunctions.isDarkMode(context);
     return Container(
       child: Form(
+          key: controller.loginFormKey,
           child: Padding(
           padding: const EdgeInsets.symmetric(vertical: TSizes.spaceBtwSections),
           child: Column(
             children: [
               /// Email
               TextFormField(
+                controller: controller.email,
+                validator: (value) => TValidator.validateEmail(value),
                 decoration: InputDecoration(
                   prefixIcon: Icon(Iconsax.direct_right),
                   labelText: TTexts.email
@@ -35,12 +43,21 @@ class FForm extends StatelessWidget {
                 height: TSizes.spaceBtwInputFields,
               ),
               /// Password
-              TextFormField(
-                decoration: InputDecoration(
-                    prefixIcon: Icon(Iconsax.password_check),
-                    labelText: TTexts.password,
-                    suffixIcon: Icon(Iconsax.eye_slash)),
+              Obx(
+            ()=> TextFormField(
+              validator: (value) => TValidator.validateEmptyText('Password', value),
+              controller: controller.password,
+              obscureText: controller.hidePassword.value,
+              decoration: InputDecoration(
+                labelText: TTexts.password,
+                prefixIcon: Icon(Iconsax.password_check),
+                suffixIcon: IconButton(
+                  onPressed: () => controller.hidePassword.value = !controller.hidePassword.value,
+                  icon: Icon(controller.hidePassword.value ? Iconsax.eye_slash : Iconsax.eye)
+                )
               ),
+            ),
+          ),
               /////////////////////////////////////////////
               SizedBox(
                 height: TSizes.spaceBtwInputFields / 3,
@@ -51,11 +68,11 @@ class FForm extends StatelessWidget {
                 /// Remember me
                   Row(
                     children: [
-                      Checkbox(
-                        value: true,
-                        onChanged: (value) {
-                          // Todo
-                        }
+                      Obx(
+                        ()=> Checkbox(
+                          value: controller.rememberMe.value,
+                          onChanged: (value) => controller.rememberMe.value = !controller.rememberMe.value
+                        ),
                       ),
                       Text(
                         TTexts.rememberMe,
@@ -88,7 +105,7 @@ class FForm extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed:() => Get.offAll(() => const HomeMenu()),
+                  onPressed:() => controller.emailAndPasswordSignIn(),
                   child: Text(
                     TTexts.signIn,
                     style: dark

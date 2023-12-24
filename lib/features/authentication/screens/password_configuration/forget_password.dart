@@ -1,4 +1,6 @@
+import 'package:drip/features/authentication/controllers/forget_password/forget_password_controller.dart';
 import 'package:drip/features/authentication/screens/password_configuration/reset_password.dart';
+import 'package:drip/utils/validators/validation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,6 +14,7 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(ForgetPasswordController());
     return Scaffold(
       /// Custom Appbar
       appBar: TAppBar(actions: [IconButton(onPressed: () => Get.back(), icon: const Icon(CupertinoIcons.clear))]),
@@ -28,8 +31,13 @@ class ForgetPassword extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwSections * 2),
       
               /// Text field
-              const TextField(
-                decoration: InputDecoration(labelText: TTexts.email, prefixIcon: Icon(Iconsax.direct_right)),
+              Form(
+                key: controller.ForgetPasswordFormkey,
+                child: TextFormField(
+                  controller: controller.email,
+                  validator: TValidator.validateEmail,
+                  decoration: InputDecoration(labelText: TTexts.email, prefixIcon: Icon(Iconsax.direct_right)),
+                ),
               ),
               const SizedBox(height: TSizes.spaceBtwSections),
       
@@ -37,10 +45,10 @@ class ForgetPassword extends StatelessWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                  onPressed: () => Get.to(() => const ResetPassword()),
-                  child: const Text(TTexts.submit),
+                  onPressed: () => controller.sendPasswordResetEmail(),
+                  child:Text(TTexts.submit),
                 ),
-              ),
+              )
             ],
           ),
         ),

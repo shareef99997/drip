@@ -1,4 +1,5 @@
 import 'package:drip/common/widgets/list_tiles/user_profile_tile.dart';
+import 'package:drip/data/repositories/authentication/authentication_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -99,7 +100,7 @@ class SettingsScreen extends StatelessWidget {
 
                   /// -- Logout Button
                   const SizedBox(height: TSizes.spaceBtwSections),
-                  SizedBox(width: double.infinity, child: OutlinedButton(onPressed: () {}, child: const Text('Logout'))),
+                  SizedBox(width: double.infinity, child: OutlinedButton(onPressed: () => Get.put(AuthenticationRepository.instance.logout()), child: const Text('Logout'))),
                   const SizedBox(height: TSizes.spaceBtwSections * 2.5),
                 ],
               ),
