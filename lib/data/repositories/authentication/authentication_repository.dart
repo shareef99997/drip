@@ -37,7 +37,7 @@ class AuthenticationRepository extends GetxController {
     if (user != null) {
       // if user logged in
       if(user.emailVerified){
-        //if user not verified
+        //if user verified
         Get.offAll(() => const HomeMenu());
       }else{
         //if user not verified
@@ -139,8 +139,10 @@ class AuthenticationRepository extends GetxController {
   /// [GoogleAuthentication] - Google
   Future<UserCredential?> signInWithGoogle()async{
     try {
+      
       // trigger the authentication flow
       final GoogleSignInAccount? userAccount = await GoogleSignIn().signIn();
+
       //Obtain the auth details 
       final GoogleSignInAuthentication? googleAuth = await userAccount?.authentication;
       

@@ -16,14 +16,14 @@ class LoginController extends GetxController {
   final rememberMe = true.obs;
   final hidePassword = true.obs;
   final localStorage = GetStorage();
-  final email = TextEditingController();
-  final password = TextEditingController();
+  final email = TextEditingController(text: ''); 
+  final password = TextEditingController(text: '');
   GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final userController = Get.put(UserController());
 
   onInit(){
-    email.text = localStorage.read('REMEMBER_ME_EMAIL');
-    password.text = localStorage.read('REMEMBER_ME_PASSSWORD');
+    email.text = localStorage.read('REMEMBER_ME_EMAIL')?? '';
+    password.text = localStorage.read('REMEMBER_ME_PASSSWORD')?? '';
     super.onInit();
   }
 
