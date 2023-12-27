@@ -7,6 +7,7 @@ import 'address_model.dart';
 
 /// Model class representing user data.
 class UserModel {
+
   // Keep those values final which you do not want to update
   final String id;
   String firstName;
@@ -19,19 +20,18 @@ class UserModel {
   final List<AddressModel>? addresses;
 
   /// Constructor for UserModel.
-  UserModel(
-    {
-      required this.id,
-      required this.firstName,
-      required this.lastName,
-      required this.username,
-      required this.email,
-      required this.phoneNumber,
-      required this.profilePicture,
-      this.cart,
-      this.addresses,
-    }
-  );
+  UserModel({
+    required this.id,
+    required this.firstName,
+    required this.lastName,
+    required this.username,
+    required this.email,
+    required this.phoneNumber,
+    required this.profilePicture,
+    this.cart,
+    this.addresses,
+  });
+  
 
   /// Helper function to get the full name.
   String get fullName => '$firstName $lastName';
@@ -49,7 +49,7 @@ class UserModel {
     String lastName = nameParts.length > 1 ? nameParts[1].toLowerCase() : "";
 
     String camelCaseUsername = "$firstName$lastName"; // Combine first and last name
-    String usernameWithPrefix = "cwt_$camelCaseUsername"; // Add "cwt_" prefix
+    String usernameWithPrefix = "drip_$camelCaseUsername"; // Add "cwt_" prefix
     return usernameWithPrefix;
   }
 
@@ -77,29 +77,29 @@ class UserModel {
     };
    }
 
-factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
-  if (document.data() != null) {
-    final data = document.data()!;
-    return UserModel(
-      id: document.id,
-      firstName: data['firstName'] ?? '',
-      lastName: data['lastName'] ?? '',
-      username: data['username'] ?? '',
-      email: data['email'] ?? '',
-      phoneNumber: data['phoneNumber'] ?? '',
-      profilePicture: data['profilePicture'] ?? '',
-    );
-  }
+    factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+      if (document.data() != null) {
+        final data = document.data()!;
+        return UserModel(
+          id: document.id,
+          firstName: data['firstName'] ?? '',
+          lastName: data['lastName'] ?? '',
+          username: data['username'] ?? '',
+          email: data['email'] ?? '',
+          phoneNumber: data['phoneNumber'] ?? '',
+          profilePicture: data['profilePicture'] ?? '',
+        );
+      }
 
-  // Add a return statement for the case where document.data() is null
-  return UserModel(
-    id: '',
-    firstName: '',
-    lastName: '',
-    username: '',
-    email: '',
-    phoneNumber: '',
-    profilePicture: '',
-  );
-}
-}
+      // Add a return statement for the case where document.data() is null
+      return UserModel(
+        id: '',
+        firstName: '',
+        lastName: '',
+        username: '',
+        email: '',
+        phoneNumber: '',
+        profilePicture: '',
+      );
+    }
+    }

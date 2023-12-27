@@ -6,6 +6,7 @@ import 'package:drip/app.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
+
 Future<void> main() async {
 
   // Widgets Binding 
