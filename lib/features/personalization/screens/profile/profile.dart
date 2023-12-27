@@ -1,7 +1,9 @@
+import 'package:drip/common/styles/shimmer.dart';
 import 'package:drip/features/personalization/controllers/user_controller.dart';
 import 'package:drip/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/images/t_circular_image.dart';
@@ -32,8 +34,15 @@ class ProfileScreen extends StatelessWidget {
                 width: double.infinity,
                 child: Column(
                   children: [
-                    const TCircularImage(image: TImages.user, width: 80, height: 80),
-                    TextButton(onPressed: () {}, child: const Text('Change Profile Picture')),
+                    Obx((){
+                      final networkImage = controller.user.value.profilePicture;
+                      final image = networkImage.isNotEmpty ? networkImage : TImages.user;
+                      return controller.imageUploading.value ?
+                        const TShimmerEffect(width: 80, height: 80,radius: 80,)
+                        : TCircularImage(image: image, width: 80, height: 80,isNetworkImage: networkImage.isNotEmpty);
+                      },
+                    ),
+                    TextButton(onPressed: () => controller.uploadUserProfilePicture(), child: const Text('Change Profile Picture')),
                   ],
                 ),
               ),

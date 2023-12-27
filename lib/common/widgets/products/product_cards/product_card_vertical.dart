@@ -35,11 +35,11 @@ class TProductCardVertical extends StatelessWidget {
       /// Container with side paddings, color, edges, radius and shadow.
       child: Container(
         width: 180,
-        padding: const EdgeInsets.all(5),
+        padding: const EdgeInsets.all(0),
         decoration: BoxDecoration(
           boxShadow: [TShadowStyle.verticalProductShadow],
           borderRadius: BorderRadius.circular(TSizes.productImageRadius),
-          color: dark ? TColors.darkerGrey : TColors.white,
+          color: dark ? TColors.darkerGrey : Color.fromARGB(255, 235, 235, 235),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,6 +48,7 @@ class TProductCardVertical extends StatelessWidget {
             TRoundedContainer(
               height: 180,
               width: 180,
+              margin: EdgeInsets.all(5),
               padding: const EdgeInsets.all(TSizes.sm),
               backgroundColor: dark ? TColors.dark : TColors.light,
               child: Stack(
@@ -58,7 +59,7 @@ class TProductCardVertical extends StatelessWidget {
                   /// -- Sale Tag
                   if (salePercentage != null)
                     Positioned(
-                      top: 12,
+                      top: 5,
                       child: TRoundedContainer(
                         radius: TSizes.sm,
                         backgroundColor: TColors.secondary.withOpacity(0.8),
@@ -84,7 +85,7 @@ class TProductCardVertical extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  TProductTitleText(title: product.title, smallSize: true,maxLines: 1,),
+                  TProductTitleText(title: product.title,smallSize: false,maxLines: 1),
                   const SizedBox(height: TSizes.spaceBtwItems / 3),
                   TBrandTitleWithVerifiedIcon(title: product.brand!.name, brandTextSize: TextSizes.small),
                 ],
@@ -148,8 +149,8 @@ class TProductCardVertical extends StatelessWidget {
                         ),
                         duration: const Duration(milliseconds: 300),
                         child: SizedBox(
-                          width: TSizes.iconLg * 1.2,
-                          height: TSizes.iconLg * 1.2,
+                          width: TSizes.iconLg * 1,
+                          height: TSizes.iconLg * 1,
                           child: Center(
                             child: productQuantityInCart > 0
                                 ? Text(productQuantityInCart.toString(),
