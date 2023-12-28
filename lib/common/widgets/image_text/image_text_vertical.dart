@@ -14,12 +14,14 @@ class TVerticalImageAndText extends StatelessWidget {
     required this.image,
     required this.title,
     this.backgroundColor,
+    this.isNetworkImage = true,
     this.textColor = TColors.white,
   });
 
   final Color textColor;
   final String image, title;
   final Color? backgroundColor;
+  final bool isNetworkImage;
   final void Function()? onTap;
 
   @override
@@ -36,6 +38,7 @@ class TVerticalImageAndText extends StatelessWidget {
               image: image,
               fit: BoxFit.fitWidth,
               padding: TSizes.sm * 1.4,
+              isNetworkImage: isNetworkImage,
               backgroundColor: backgroundColor,
               overlayColor: dark ? TColors.light : TColors.dark,
             ),

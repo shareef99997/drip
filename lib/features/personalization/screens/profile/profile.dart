@@ -1,4 +1,4 @@
-import 'package:drip/common/styles/shimmer.dart';
+import 'package:drip/common/widgets/shimmers/shimmer.dart';
 import 'package:drip/features/personalization/controllers/user_controller.dart';
 import 'package:drip/features/personalization/screens/profile/widgets/profile_menu.dart';
 import 'package:flutter/material.dart';

@@ -19,9 +19,9 @@ import 'package:image_picker/image_picker.dart';
 class UserController extends GetxController{
   static UserController get instance => Get.find();
   
+  ///Variables
   final profileLoading = false.obs;
   Rx<UserModel> user = UserModel.empty().obs;
-
   final hidePassword =false.obs;
   final imageUploading = false.obs;
   final verifyEmail =TextEditingController();
