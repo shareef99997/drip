@@ -14,14 +14,12 @@ class TVerticalImageAndText extends StatelessWidget {
     required this.image,
     required this.title,
     this.backgroundColor,
-    this.isNetworkImage = true,
     this.textColor = TColors.white,
   });
 
   final Color textColor;
   final String image, title;
   final Color? backgroundColor;
-  final bool isNetworkImage;
   final void Function()? onTap;
 
   @override
@@ -36,9 +34,8 @@ class TVerticalImageAndText extends StatelessWidget {
             /// Circular Icon
             TCircularImage(
               image: image,
-              fit: BoxFit.fitWidth,
-              padding: TSizes.sm * 1.4,
-              isNetworkImage: isNetworkImage,
+              fit: BoxFit.contain,
+              padding: TSizes.sm * 1.3,
               backgroundColor: backgroundColor,
               overlayColor: dark ? TColors.light : TColors.dark,
             ),

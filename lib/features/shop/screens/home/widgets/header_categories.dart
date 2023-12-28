@@ -24,7 +24,6 @@ class THeaderCategories extends StatelessWidget {
           /// -- Heading
           const TSectionHeading(title: 'Popular Categories', textColor: TColors.white, showActionButton: false),
           const SizedBox(height: TSizes.spaceBtwItems),
-
           /// -- Categories
           Container(
             height: 100,

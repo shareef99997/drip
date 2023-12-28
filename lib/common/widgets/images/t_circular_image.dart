@@ -37,25 +37,31 @@ class TCircularImage extends StatelessWidget {
         color: backgroundColor ?? (THelperFunctions.isDarkMode(context) ? TColors.black : TColors.white),
         borderRadius: BorderRadius.circular(100),
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(100),
-        child: Center(
           child:isNetworkImage?
-                CachedNetworkImage(
-                  fit: fit,
-                  color: overlayColor,
-                  imageUrl: image,
-                  progressIndicatorBuilder: (context, url, downloadProgress) => const TShimmerEffect(width:70,height:70,radius: 55,),
-                  errorWidget: (context, url, error) => Icon(Icons.error),
-                  
-                  )
-                :Image(
-                  fit: fit,
-                  image: AssetImage(image),
-                  color: overlayColor,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Center(
+                    child: CachedNetworkImage(
+                      fit: fit,
+                      color: overlayColor,
+                      width: width - padding * 2, // Adjust the width based on padding
+                      height: height - padding * 2, // Adjust the height based on padding
+                      imageUrl: image,
+                      progressIndicatorBuilder: (context, url, downloadProgress) => const TShimmerEffect(width:70,height:70,radius: 55,),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                      
+                      ),
+                  ),
+                )
+                :Center(
+                  child: Image(
+                    fit: fit,
+                    image: AssetImage(image),
+                    color: overlayColor,
+                  ),
                 ),
-        ),
-      ),
+        
+      
     );
   }
 }
