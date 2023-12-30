@@ -1,5 +1,7 @@
+import 'package:drip/common/widgets/icons/t_circular_icon.dart';
 import 'package:drip/features/shop/models/cart_item_model.dart';
 import 'package:flutter/material.dart';
+import 'package:iconsax/iconsax.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -12,8 +14,9 @@ class TCartItem extends StatelessWidget {
   const TCartItem({
     super.key,
     required this.item,
+    required this.onpressed,
   });
-
+  final onpressed;
   final CartItemModel item;
 
   @override
@@ -59,6 +62,16 @@ class TCartItem extends StatelessWidget {
             ],
           ),
         ),
+         const SizedBox(width: TSizes.spaceBtwItems),
+          TCircularIcon(
+            icon: Iconsax.card_remove4,
+            onPressed: onpressed,
+            width: 32,
+            height: 32,
+            size: TSizes.md,
+            color: Colors.red,
+            backgroundColor: TColors.primary,
+          ), 
       ],
     );
   }

@@ -19,7 +19,7 @@ class TCartItems extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cartController = Get.put(CartController());
+    final cartController = CartController.instance;
     final cartItems = cartController.cartItems;
     return Obx(
       () => ListView.separated(
@@ -35,7 +35,7 @@ class TCartItems extends StatelessWidget {
               return Column(
                 children: [
                   /// -- Cart Items
-                  TCartItem(item: item),
+                  TCartItem(item: item,onpressed: () => cartController.updateCartItemQuantity(item, item.quantity - 100),),
                   if (showAddRemoveButtons) const SizedBox(height: TSizes.spaceBtwItems),
 
                   /// -- Add Remove Buttons and Price Total

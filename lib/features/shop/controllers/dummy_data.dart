@@ -106,28 +106,9 @@ class TDummyData {
 
   /// -- Cart
   static final CartModel cart = CartModel(
-    cartId: '001',
+    cartId: '',
     items: [
-      CartItemModel(
-        productId: '001',
-        variationId: '1',
-        quantity: 1,
-        title: products[0].title,
-        image: products[0].thumbnail,
-        brandName: products[0].brand!.name,
-        price: products[0].productVariations![0].price,
-        selectedVariation: products[0].productVariations![0].attributeValues,
-      ),
-      CartItemModel(
-        productId: '002',
-        variationId: '',
-        quantity: 1,
-        title: products[1].title,
-        image: products[1].thumbnail,
-        brandName: products[1].brand!.name,
-        price: products[1].price,
-        selectedVariation: products[1].productVariations != null ? products[1].productVariations![1].attributeValues : {},
-      ),
+      
     ],
   );
 
@@ -823,22 +804,22 @@ class TDummyData {
         ProductVariationModel(
             id: '1',
             stock: 16,
-            price: 36,
-            salePrice: 12.6,
+            price: 360,
+            salePrice: 120.6,
             image: TImages.productImage32,
             description:
             'Flutter is Google’s mobile UI open source framework to build high-quality native (super fast) interfaces for iOS and Android apps with the unified codebase.',
             attributeValues: {'Color': 'Brown', 'Size': 'EU 34'}),
         ProductVariationModel(
-            id: '2', stock: 15, price: 35, image: TImages.productImage45, attributeValues: {'Color': 'Brown', 'Size': 'EU 32'}),
+            id: '2', stock: 15, price: 350, image: TImages.productImage45, attributeValues: {'Color': 'Brown', 'Size': 'EU 32'}),
         ProductVariationModel(
-            id: '3', stock: 14, price: 34, image: TImages.productImage46, attributeValues: {'Color': 'Brown', 'Size': 'EU 30'}),
+            id: '3', stock: 14, price: 340, image: TImages.productImage46, attributeValues: {'Color': 'Brown', 'Size': 'EU 30'}),
         ProductVariationModel(
-            id: '4', stock: 13, price: 33, image: TImages.productImage43, attributeValues: {'Color': 'Black', 'Size': 'EU 32'}),
+            id: '4', stock: 13, price: 330, image: TImages.productImage43, attributeValues: {'Color': 'Black', 'Size': 'EU 32'}),
         ProductVariationModel(
-            id: '5', stock: 12, price: 32, image: TImages.productImage43, attributeValues: {'Color': 'Black', 'Size': 'EU 34'}),
+            id: '5', stock: 12, price: 320, image: TImages.productImage43, attributeValues: {'Color': 'Black', 'Size': 'EU 34'}),
         ProductVariationModel(
-            id: '6', stock: 11, price: 31, image: TImages.productImage44, attributeValues: {'Color': 'Grey', 'Size': 'EU 32'}),
+            id: '6', stock: 11, price: 310, image: TImages.productImage44, attributeValues: {'Color': 'Grey', 'Size': 'EU 32'}),
       ],
       productType: 'ProductType.variable',
     ),
