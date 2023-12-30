@@ -1,3 +1,4 @@
+import 'package:drip/features/shop/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -11,7 +12,7 @@ import '../../controllers/product_controller.dart';
 import '../store/store.dart';
 
 class FavouriteScreen extends StatelessWidget {
-  const FavouriteScreen({super.key});
+  const FavouriteScreen({Key? key});
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +29,13 @@ class FavouriteScreen extends StatelessWidget {
 
               /// Products Grid
               Obx(() {
-                final products = ProductController.instance.favoriteProducts();
-                return TGridLayout(
-                  itemCount: products.length,
-                  itemBuilder: (_, index) => TProductCardVertical(product: products[index]),
-                );
-              }),
+  final List<ProductModel> favoriteProducts = ProductController.instance.favoriteProducts();
+  return TGridLayout(
+    itemCount: favoriteProducts.length,
+    itemBuilder: (_, index) => TProductCardVertical(product: favoriteProducts[index]),
+  );
+}),
+
               SizedBox(height: TDeviceUtils.getBottomNavigationBarHeight() + TSizes.defaultSpace),
             ],
           ),

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../utils/constants/sizes.dart';
@@ -5,6 +6,7 @@ import '../models/product_model.dart';
 import '../models/product_variation_model.dart';
 import 'cart_controller.dart';
 import 'dummy_data.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();
@@ -17,7 +19,8 @@ class ProductController extends GetxController {
   RxString selectedProductImage = ''.obs;
   final favorites = <String, RxBool>{}.obs; // Contains [ProductId: true] Favourite Product
   Rx<ProductVariationModel> selectedVariation = ProductVariationModel.empty().obs;
-
+  
+  String? userUid = FirebaseAuth.instance.currentUser?.uid;
   /// -- Initialize Products from your backend
   @override
   void onInit() {
@@ -235,17 +238,69 @@ class ProductController extends GetxController {
   }
 
   /// -- Add Product to Favourites
+  // void toggleFavoriteProduct(String productId) {
+  //   // If favourites do not have this product, Add. Else Toggle
+  //   if (!favorites.containsKey(productId)) {
+  //     favorites[productId] = true.obs;
+  //   } else {
+  //     favorites[productId]!.value = !favorites[productId]!.value;
+  //   }
+  // }
+
+  /// Method to get the list of favorite products
+  List<ProductModel> favoriteProducts() {
+    return products.where((product) => isFavourite(product.id)).toList();
+  }
+
+
+
+
+  ////////////////////////////////
+  final CollectionReference _favoritesCollection = FirebaseFirestore.instance.collection('favorites');
+
+  // Save the user's favorite products to Firestore
+  Future<void> saveFavoritesToFirestore(List<String> favoriteProductIds) async {
+    await _favoritesCollection.doc(userUid).set({
+      'favorites': favoriteProductIds,
+    });
+  }
+
+  // Retrieve the user's favorite products from Firestore
+ Future<List<ProductModel>> getFavoritesFromFirestore() async {
+    final DocumentSnapshot<Object?> snapshot = await _favoritesCollection.doc(userUid).get();
+    final data = snapshot.data() as Map<String, dynamic>?;
+
+    final List<String> favoriteProductIds = data != null ? List<String>.from(data['favorites'] ?? []) : [];
+
+    // Fetch the actual ProductModel objects based on the product IDs
+    final List<ProductModel> favoriteProducts = products
+        .where((product) => favoriteProductIds.contains(product.id))
+        .toList();
+
+    return favoriteProducts;
+  }
+
+  // Add product to favorites and save to Firestore
   void toggleFavoriteProduct(String productId) {
-    // If favourites do not have this product, Add. Else Toggle
+    // If favorites do not have this product, Add. Else Toggle
     if (!favorites.containsKey(productId)) {
       favorites[productId] = true.obs;
     } else {
       favorites[productId]!.value = !favorites[productId]!.value;
     }
-  }
 
-  /// Method to get the list of favorite products
-  List<ProductModel> favoriteProducts() {
-    return products.where((product) => isFavourite(product.id)).toList();
+    // Get the list of favorite products and save to Firestore
+    final favoriteProductIds = favoriteProducts().map((product) => product.id).toList();
+    saveFavoritesToFirestore(favoriteProductIds);
+  }
+  
+
+  // Fetch the actual ProductModel objects based on the product IDs
+  Future<List<ProductModel>> fetchFavoriteProducts(List<String> productIds) async {
+    final List<ProductModel> favoriteProducts = products
+        .where((product) => productIds.contains(product.id))
+        .toList();
+
+    return favoriteProducts;
   }
 }
