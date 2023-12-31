@@ -43,7 +43,7 @@ class TBrandCard extends StatelessWidget {
                 overlayColor: isDark ? TColors.white : TColors.black,
               ),
             ),
-            const SizedBox(width: TSizes.spaceBtwItems / 2),
+            const SizedBox(width: TSizes.spaceBtwItems / 3),
 
             /// -- Texts
             // [Expanded] & Column [MainAxisSize.min] is important to keep the elements in the vertical center and also

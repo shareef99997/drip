@@ -44,7 +44,7 @@ class TCategoryTab extends StatelessWidget {
                 children: [
                   TSectionHeading(
                     title: 'You might like',
-                    onPressed: () => Get.to(AllProducts(title: category.name, products: categoryProducts),transition: Transition.fadeIn),
+                    onPressed: () => Get.to(AllProducts(title: category.name, products: categoryProducts),transition: Transition.leftToRightWithFade),
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   TGridLayout(

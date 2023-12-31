@@ -29,7 +29,7 @@ class OnBoardingController extends GetxController{
     }
 
       storage.write('IsFirstTime', false);
-      Get.offAll(() => LoginScreen(),transition: Transition.fadeIn);
+      Get.offAll(() => LoginScreen(),transition: Transition.leftToRightWithFade);
     }else{
       int page = currentPageIndex.value+1;
       pageController.jumpToPage(page);

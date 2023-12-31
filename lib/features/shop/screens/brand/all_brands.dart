@@ -36,7 +36,7 @@ class AllBrandsScreen extends StatelessWidget {
                   return TBrandCard(
                     brand: brand,
                     showBorder: true,
-                    onTap: () => Get.to(() => BrandScreen(brand: brand),transition: Transition.fadeIn),
+                    onTap: () => Get.to(() => BrandScreen(brand: brand),transition: Transition.leftToRightWithFade),
                   );
                 },
               ),

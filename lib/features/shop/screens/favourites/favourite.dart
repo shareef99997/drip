@@ -19,7 +19,7 @@ class FavouriteScreen extends StatelessWidget {
     return Scaffold(
       appBar: TAppBar(
         title: Text('Wishlist', style: Theme.of(context).textTheme.headlineMedium),
-        actions: [TCircularIcon(icon: Iconsax.add, onPressed: () => Get.to(() => const StoreScreen(),transition: Transition.fadeIn))],
+        actions: [TCircularIcon(icon: Iconsax.add, onPressed: () => Get.to(() => const StoreScreen(),transition: Transition.leftToRightWithFade))],
       ),
       body: SingleChildScrollView(
         child: Padding(

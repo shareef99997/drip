@@ -43,7 +43,7 @@ class SubCategoriesScreen extends StatelessWidget {
                           () => AllProducts(
                             title: subCategory.name,
                             products: controller.getSubCategoryProducts(subCategory.id, 50),
-                          ),transition: Transition.fadeIn
+                          ),transition: Transition.leftToRightWithFade
                         ),
                       ),
                       const SizedBox(height: TSizes.spaceBtwItems / 2),

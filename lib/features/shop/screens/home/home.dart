@@ -61,7 +61,7 @@ class HomeScreen extends StatelessWidget {
                   /// -- Popular Products
                   TSectionHeading(
                     title: TTexts.popularProducts,
-                    onPressed: () => Get.to(() => AllProducts(title: TTexts.popularProducts, products: TDummyData.products),transition: Transition.fadeIn),
+                    onPressed: () => Get.to(() => AllProducts(title: TTexts.popularProducts, products: TDummyData.products),transition: Transition.leftToRightWithFade),
                   ),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   TGridLayout(
@@ -77,7 +77,7 @@ class HomeScreen extends StatelessWidget {
                   /// -- Popular Products
                   TSectionHeading(
                       title: TTexts.popularProducts,
-                      onPressed: () => Get.to(() => AllProducts(title: TTexts.popularProducts, products: TDummyData.products),transition: Transition.fadeIn)),
+                      onPressed: () => Get.to(() => AllProducts(title: TTexts.popularProducts, products: TDummyData.products),transition: Transition.leftToRightWithFade)),
                   const SizedBox(height: TSizes.spaceBtwItems),
                   TGridLayout(
                     itemCount: popularProducts.length,

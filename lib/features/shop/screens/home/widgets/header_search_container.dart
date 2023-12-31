@@ -28,7 +28,7 @@ class TSearchContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => const SearchScreen(),transition: Transition.fadeIn),
+      onTap: () => Get.to(() => const SearchScreen(),transition: Transition.leftToRightWithFade),
       child: Padding(
         padding: padding,
         child: Container(

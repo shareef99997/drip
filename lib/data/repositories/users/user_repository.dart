@@ -8,6 +8,7 @@ import 'package:drip/features/personalization/models/user_model.dart';
 import 'package:drip/utils/exceptions/firebase_exceptions.dart';
 import 'package:drip/utils/exceptions/format_exceptions.dart';
 import 'package:drip/utils/exceptions/platform_exceptions.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -118,5 +119,20 @@ class UserRepository extends GetxController {
     }
   }
 
-  
+  /// Send Change Password Email
+  Future<void> sendChangePasswordEmail(String email) async {
+    try {
+      // Send a password reset email to the provided email address
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      throw TFirebaseException(e.code).message;
+    } on FormatException catch (_) {
+      throw const TFormatException();
+    } on PlatformException catch (e) {
+      throw TPlatformException(e.code).message;
+    } catch (e) {
+      throw 'Something went wrong. Please try again';
+    }
+  }
+
 }

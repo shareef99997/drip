@@ -21,6 +21,57 @@ class AddressModel {
     required this.country,
   });
 
+  AddressModel copyWith({
+    String? id,
+    String? name,
+    String? phoneNumber,
+    String? street,
+    String? city,
+    String? state,
+    String? postalCode,
+    String? country,
+  }) {
+    return AddressModel(
+      id: id ?? this.id,
+      name: name ?? this.name,
+      phoneNumber: phoneNumber ?? this.phoneNumber,
+      street: street ?? this.street,
+      city: city ?? this.city,
+      state: state ?? this.state,
+      postalCode: postalCode ?? this.postalCode,
+      country: country ?? this.country,
+    );
+  }
+
+
+  // Factory constructor to create an AddressModel from a map
+  factory AddressModel.fromMap(Map<String, dynamic> map) {
+    return AddressModel(
+      id: map['id'],
+      name: map['name'],
+      phoneNumber: map['phoneNumber'],
+      street: map['street'],
+      postalCode: map['postalCode'],
+      city: map['city'],
+      state: map['state'],
+      country: map['country'], 
+    );
+  }
+
+  // Method to convert AddressModel to a map
+  Map<String, dynamic> toMap() {
+    return {
+      'id' : id,
+      'name': name,
+      'phoneNumber': phoneNumber,
+      'street': street,
+      'postalCode': postalCode,
+      'city': city,
+      'state': state,
+      'country': country,
+    };
+  }
+
   String get formattedPhoneNo => TFormatter.formatPhoneNumber(phoneNumber);
 
 

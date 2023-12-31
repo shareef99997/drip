@@ -36,7 +36,7 @@ class THeaderCategories extends StatelessWidget {
                 return TVerticalImageAndText(
                   image: category.image,
                   title: category.name,
-                  onTap: () => Get.to(() => SubCategoriesScreen(category: category),transition: Transition.fadeIn),
+                  onTap: () => Get.to(() => SubCategoriesScreen(category: category),transition: Transition.leftToRightWithFade),
                 );
               },
             ),

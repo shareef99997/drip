@@ -41,15 +41,15 @@ class AuthenticationRepository extends GetxController {
       // if user logged in
       if(user.emailVerified){
         //if user verified
-        Get.offAll(() => const HomeMenu(),transition: Transition.fadeIn);
+        Get.offAll(() => const HomeMenu(),transition: Transition.leftToRightWithFade);
       }else{
         //if user not verified
-        Get.offAll(() => VerifyEmailScreen(email:_auth.currentUser?.email),transition: Transition.fadeIn);
+        Get.offAll(() => VerifyEmailScreen(email:_auth.currentUser?.email),transition: Transition.leftToRightWithFade);
       }
     }else {
     //Local Storage
     deviceStorage.writeIfNull("IsFirstTime",true);
-    deviceStorage.read('IsFirstTime') != true ? Get.offAll(() => LoginScreen(),transition: Transition.fadeIn):Get.offAll(OnBoardingScreen(),transition: Transition.fadeIn);
+    deviceStorage.read('IsFirstTime') != true ? Get.offAll(() => LoginScreen(),transition: Transition.leftToRightWithFade):Get.offAll(OnBoardingScreen(),transition: Transition.leftToRightWithFade);
     }
   }
     

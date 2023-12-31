@@ -57,7 +57,7 @@ class ProductDetailScreen extends StatelessWidget {
                     width: TDeviceUtils.getScreenWidth(context),
                     child: ElevatedButton(child: const Text('Checkout'), onPressed: () {
                       cartController.addSingleItemToCart(product, ProductVariationModel.empty()); 
-                      Get.to(() => const CheckoutScreen(),transition: Transition.fadeIn);
+                      Get.to(() => const CheckoutScreen(),transition: Transition.leftToRightWithFade);
                       }),
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),
@@ -87,7 +87,7 @@ class ProductDetailScreen extends StatelessWidget {
                       const TSectionHeading(title: 'Reviews (199)', showActionButton: false),
                       IconButton(
                         icon: const Icon(Iconsax.arrow_right_3, size: 18),
-                        onPressed: () => Get.to(() => const ProductReviewsScreen(),transition: Transition.fadeIn, fullscreenDialog: true),
+                        onPressed: () => Get.to(() => const ProductReviewsScreen(),transition: Transition.leftToRightWithFade, fullscreenDialog: true),
                       )
                     ],
                   ),

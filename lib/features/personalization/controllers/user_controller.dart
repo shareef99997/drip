@@ -112,10 +112,10 @@ class UserController extends GetxController{
           await auth.signInWithGoogle();
           await auth.deleteAccount();
           TFullScreenLoader.stopLoading();
-          Get.offAll(() => const LoginScreen(),transition: Transition.fadeIn);
+          Get.offAll(() => const LoginScreen(),transition: Transition.leftToRightWithFade);
         } else if(provider == 'password') {
           TFullScreenLoader.stopLoading();
-           Get.to(() => const ReAuthLoginForm(),transition: Transition.fadeIn);
+           Get.to(() => const ReAuthLoginForm(),transition: Transition.leftToRightWithFade);
         }
       }
     } catch (e) {
@@ -145,7 +145,7 @@ class UserController extends GetxController{
       await AuthenticationRepository.instance.deleteAccount();
 
       TFullScreenLoader.stopLoading();
-      Get.offAll(() => const LoginScreen(),transition: Transition.fadeIn);
+      Get.offAll(() => const LoginScreen(),transition: Transition.leftToRightWithFade);
     } catch (e) {
       TFullScreenLoader.stopLoading();
       TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());

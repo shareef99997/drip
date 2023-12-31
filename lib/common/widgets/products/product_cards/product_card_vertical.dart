@@ -30,7 +30,7 @@ class TProductCardVertical extends StatelessWidget {
     final salePercentage = ProductController.instance.calculateSalePercentage(product.price, product.salePrice);
     final dark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => ProductDetailScreen(product: product),transition: Transition.fadeIn),
+      onTap: () => Get.to(() => ProductDetailScreen(product: product),transition: Transition.leftToRightWithFade),
 
       /// Container with side paddings, color, edges, radius and shadow.
       child: Container(
@@ -131,7 +131,7 @@ class TProductCardVertical extends StatelessWidget {
                     if (product.productVariations == null) {
                       cartController.addSingleItemToCart(product, ProductVariationModel.empty());
                     } else {
-                      Get.to(() => ProductDetailScreen(product: product),transition: Transition.fadeIn);
+                      Get.to(() => ProductDetailScreen(product: product),transition: Transition.leftToRightWithFade);
                     }
                   },
                   child: Obx(

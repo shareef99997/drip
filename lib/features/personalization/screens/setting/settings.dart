@@ -33,7 +33,7 @@ class SettingsScreen extends StatelessWidget {
                   TAppBar(title: Text('Account', style: Theme.of(context).textTheme.headlineMedium!.apply(color: TColors.white))),
 
                   /// User Profile Card
-                  TUserProfileTile(user: TDummyData.user, onPressed: () => Get.to(() => const ProfileScreen(),transition: Transition.fadeIn,)),
+                  TUserProfileTile(user: TDummyData.user, onPressed: () => Get.to(() => const ProfileScreen(),transition: Transition.leftToRightWithFade,)),
                   const SizedBox(height: TSizes.spaceBtwSections),
                 ],
               ),
@@ -52,19 +52,19 @@ class SettingsScreen extends StatelessWidget {
                     icon: Iconsax.safe_home,
                     title: 'My Addresses',
                     subTitle: 'Set shopping delivery address',
-                    onTap: () => Get.to(() => const UserAddressScreen(),transition: Transition.fadeIn),
+                    onTap: () => Get.to(() => const UserAddressScreen(),transition: Transition.leftToRightWithFade),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.shopping_cart,
                     title: 'My Cart',
                     subTitle: 'Add, remove products and move to checkout',
-                    onTap: () => Get.to(() => const CartScreen(),transition: Transition.fadeIn),
+                    onTap: () => Get.to(() => const CartScreen(),transition: Transition.leftToRightWithFade),
                   ),
                   TSettingsMenuTile(
                     icon: Iconsax.bag_tick,
                     title: 'My Orders',
                     subTitle: 'In-progress and Completed Orders',
-                    onTap: () => Get.to(() => const OrderScreen(),transition: Transition.fadeIn),
+                    onTap: () => Get.to(() => const OrderScreen(),transition: Transition.leftToRightWithFade),
                   ),
                   const TSettingsMenuTile(
                       icon: Iconsax.bank, title: 'Bank Account', subTitle: 'Withdraw balance to registered bank account'),

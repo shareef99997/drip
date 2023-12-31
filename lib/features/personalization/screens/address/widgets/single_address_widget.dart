@@ -42,30 +42,72 @@ class TSingleAddress extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned(
-                  right: 5,
+                  right: 0,
                   top: 0,
-                  child: Icon(
-                    isAddressSelected ? Iconsax.tick_circle1 : Iconsax.tick_circle1,
-                    color: isAddressSelected
-                        ? TColors.primary
-                        : dark
-                            ? TColors.darkerGrey
-                            : TColors.grey,
+                  child: IconButton(
+                    onPressed: (){},
+                    icon: Icon(
+                      isAddressSelected ? Iconsax.tick_circle1 : Iconsax.tick_circle1,
+                      color: isAddressSelected
+                          ? TColors.primary
+                          : dark
+                              ? TColors.darkerGrey
+                              : TColors.grey,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  right: 0,
+                  bottom: 0,
+                  child: IconButton(
+                    onPressed: () {
+                      controller.deleteAddress(address);
+                    },
+                    icon: Icon(
+                      isAddressSelected ? Icons.delete : Icons.delete,
+                      color: isAddressSelected
+                          ? Colors.red
+                          : dark
+                              ? Colors.red
+                              : Colors.red,
+                    ),
                   ),
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      address.name,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: Theme.of(context).textTheme.titleLarge,
+                    Row(
+                      children:[
+                        Icon(Icons.location_on_outlined,size: TSizes.iconXs,),
+                        SizedBox(width: TSizes.spaceBtwItems,),
+                        Text(address.name,maxLines: 1,overflow: TextOverflow.ellipsis,style: Theme.of(context).textTheme.titleLarge,),
+                      ]
+                    ),
+                    const SizedBox(height: TSizes.sm ),
+                    Row(
+                      children:[
+                        Icon(Icons.phone,size: TSizes.iconXs,),
+                        SizedBox(width: TSizes.spaceBtwItems,),
+                        Text(address.formattedPhoneNo, maxLines: 1, overflow: TextOverflow.ellipsis),
+                      ]
                     ),
                     const SizedBox(height: TSizes.sm / 2),
-                    Text(address.formattedPhoneNo, maxLines: 1, overflow: TextOverflow.ellipsis),
+                    Row(
+                      children:[
+                        Icon(Icons.location_city_outlined,size: TSizes.iconXs),
+                        SizedBox(width: TSizes.spaceBtwItems,),
+                        Text(address.country+', '+address.city+', '+address.state, softWrap: true),
+                      ]
+                    ),
                     const SizedBox(height: TSizes.sm / 2),
-                    Text(address.toString(), softWrap: true),
+                    Row(
+                      children:[
+                        Icon(Icons.directions_car_filled_outlined,size: TSizes.iconXs),
+                        SizedBox(width: TSizes.spaceBtwItems,),
+                        Text(address.street+', '+address.postalCode, softWrap: true)
+                      ]
+                    ),
+                    
                   ],
                 )
               ],

@@ -19,7 +19,7 @@ class THomeAppBar extends StatelessWidget {
     final controller = Get.put(UserController());
     return TAppBar(
       title: GestureDetector(
-        onTap: () => Get.to(() => const ProfileScreen(),transition: Transition.fadeIn),
+        onTap: () => Get.to(() => const ProfileScreen(),transition: Transition.leftToRightWithFade),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

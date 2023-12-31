@@ -8,13 +8,12 @@ import 'package:drip/utils/popups/loaders.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class UpdateNameController extends GetxController {
-  static UpdateNameController get instance => Get.find();
+class UpdatePhoneController extends GetxController {
+  static UpdatePhoneController get instance => Get.find();
 
     /// Variables
-  GlobalKey<FormState> updateUserNameFormKey = GlobalKey<FormState>();
-   final firstName = TextEditingController();
-   final lastName = TextEditingController();
+  GlobalKey<FormState> updatePhoneNumberFormKey = GlobalKey<FormState>();
+   final phonenumber = TextEditingController();
    final usercontroller = UserController.instance;
    final userRepository = Get.put(UserRepository());
    
@@ -26,11 +25,10 @@ class UpdateNameController extends GetxController {
   }
 
   Future<void> initializNames() async {
-      firstName.text = usercontroller.user.value.firstName;
-      lastName.text = usercontroller.user.value.lastName;
+      phonenumber.text = usercontroller.user.value.phoneNumber;
     }
   
-  Future<void>updateUserName() async{
+  Future<void>updatePhoneNumber() async{
     try {
 
       TFullScreenLoader.openLoadingDiolog('We are processing your information...', TImages.docerAnimation);
@@ -43,25 +41,24 @@ class UpdateNameController extends GetxController {
       }  
       print('----------------- 1 --------------------');
       // Form Validation 
-      if (!updateUserNameFormKey.currentState!.validate()) {
+      if (!updatePhoneNumberFormKey.currentState!.validate()) {
           TFullScreenLoader.stopLoading();
           return;
       }
       print('----------------- 2 --------------------');
       // Update user's name
-      Map<String, dynamic> name = {'firstName': firstName.text.trim(), 'lastName':lastName.text.trim()};
-      await userRepository.updateSingleFeild(name);
+      Map<String, dynamic> phone = {'phoneNumber': phonenumber.text.trim()};
+      await userRepository.updateSingleFeild(phone);
       print('----------------- 3 --------------------');
       //Update Rx User Value
-      usercontroller.user.value.firstName = firstName.text.trim();
-      usercontroller.user.value.lastName = lastName.text.trim();
+      usercontroller.user.value.phoneNumber = phonenumber.text.trim();
  
       print('----------------- 4 --------------------');
       //Remove Loader
       TFullScreenLoader.stopLoading();
       
       // Show Success Message 
-      TLoaders.successSnackBar(title: 'All Done👍', message: 'Your Name has been updated.');
+      TLoaders.successSnackBar(title: 'All Done👍', message: 'Your Phone Number has been updated.');
 
       Get.offAll(()=> const ProfileScreen(),transition: Transition.leftToRightWithFade);
 
