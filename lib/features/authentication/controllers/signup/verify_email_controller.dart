@@ -46,7 +46,7 @@ class VerifyEmailController extends GetxController {
               image: TImages.staticSuccessIllustration,
               title: TTexts.yourAccountCreatedTitle,
               subTitle: TTexts.yourAccountCreatedSubTitle,
-              onPressed: () =>AuthenticationRepository.instance.screenRedirect()),      
+              onPressed: () =>AuthenticationRepository.instance.screenRedirect()),transition: Transition.fadeIn      
         );
       }}
     );
@@ -61,7 +61,7 @@ class VerifyEmailController extends GetxController {
               image: TImages.staticSuccessIllustration,
               title: TTexts.yourAccountCreatedTitle,
               subTitle: TTexts.yourAccountCreatedSubTitle,
-              onPressed: () =>AuthenticationRepository.instance.screenRedirect()),      
+              onPressed: () =>AuthenticationRepository.instance.screenRedirect()),transition: Transition.fadeIn      
         );
     }else{
       TLoaders.warningSnackBar(

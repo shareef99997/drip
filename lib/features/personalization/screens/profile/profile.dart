@@ -52,7 +52,7 @@ class ProfileScreen extends StatelessWidget {
               
               const TSectionHeading(title: 'Profile Information', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
-              TProfileMenu(onPressed: () => Get.to(() => const ChangeName()), title: 'Name', value: controller.user.value.fullName),
+              TProfileMenu(onPressed: () => Get.to(() => const ChangeName(),transition: Transition.fadeIn), title: 'Name', value: controller.user.value.fullName),
               TProfileMenu(onPressed: () {}, title: 'Username', value: controller.user.value.username),
               const SizedBox(height: TSizes.spaceBtwItems),
               const Divider(),

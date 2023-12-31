@@ -18,7 +18,7 @@ class TBrandShowcase extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(BrandScreen(brand: brand)),
+      onTap: () => Get.to(BrandScreen(brand: brand),transition: Transition.fadeIn),
       child: TRoundedContainer(
         margin: const EdgeInsets.only(bottom: TSizes.spaceBtwItems),
         showBorder: true,

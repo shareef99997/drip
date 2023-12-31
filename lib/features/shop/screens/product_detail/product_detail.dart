@@ -1,3 +1,5 @@
+import 'package:drip/features/shop/controllers/cart_controller.dart';
+import 'package:drip/features/shop/models/product_variation_model.dart';
 import 'package:drip/features/shop/screens/product_detail/widgets/product_attributes.dart';
 import 'package:drip/features/shop/screens/product_detail/widgets/product_detail_image_slider.dart';
 import 'package:drip/features/shop/screens/product_detail/widgets/product_meta_data.dart';
@@ -22,6 +24,7 @@ class ProductDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartController = CartController.instance;
     return Scaffold(
       bottomNavigationBar: TBottomAddToCart(product: product),
       body: SingleChildScrollView(
@@ -52,7 +55,10 @@ class ProductDetailScreen extends StatelessWidget {
                   /// -- Checkout Button
                   SizedBox(
                     width: TDeviceUtils.getScreenWidth(context),
-                    child: ElevatedButton(child: const Text('Checkout'), onPressed: () => Get.to(() => const CheckoutScreen())),
+                    child: ElevatedButton(child: const Text('Checkout'), onPressed: () {
+                      cartController.addSingleItemToCart(product, ProductVariationModel.empty()); 
+                      Get.to(() => const CheckoutScreen(),transition: Transition.fadeIn);
+                      }),
                   ),
                   const SizedBox(height: TSizes.spaceBtwSections),
 
@@ -81,7 +87,7 @@ class ProductDetailScreen extends StatelessWidget {
                       const TSectionHeading(title: 'Reviews (199)', showActionButton: false),
                       IconButton(
                         icon: const Icon(Iconsax.arrow_right_3, size: 18),
-                        onPressed: () => Get.to(() => const ProductReviewsScreen(), fullscreenDialog: true),
+                        onPressed: () => Get.to(() => const ProductReviewsScreen(),transition: Transition.fadeIn, fullscreenDialog: true),
                       )
                     ],
                   ),

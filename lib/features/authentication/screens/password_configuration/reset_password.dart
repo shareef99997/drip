@@ -22,7 +22,7 @@ class ResetPassword extends StatelessWidget {
       /// Appbar to go back OR close all screens and Goto LoginScreen()
       appBar: TAppBar(
         actions: [
-          IconButton(onPressed: () => Get.offAll(const LoginScreen()), icon: const Icon(CupertinoIcons.clear)),
+          IconButton(onPressed: () => Get.offAll(const LoginScreen(),transition: Transition.fadeIn), icon: const Icon(CupertinoIcons.clear)),
         ],
       ),
       body: SingleChildScrollView(
@@ -46,7 +46,7 @@ class ResetPassword extends StatelessWidget {
               SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
-                      onPressed: () =>Get.offAll(LoginScreen()),
+                      onPressed: () =>Get.offAll(LoginScreen(),transition: Transition.fadeIn),
                       child: const Text(TTexts.done))
               ),
               const SizedBox(height: TSizes.spaceBtwItems),

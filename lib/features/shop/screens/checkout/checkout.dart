@@ -87,8 +87,8 @@ class CheckoutScreen extends StatelessWidget {
                 image: TImages.successfulPaymentIcon,
                 title: 'Payment Success!',
                 subTitle: 'Your item will be shipped soon!',
-                onPressed: () => Get.offAll(() => const HomeMenu()),
-              ),
+                onPressed: () => Get.offAll(() => const HomeMenu(),transition: Transition.fadeIn),
+              ),transition: Transition.fadeIn
             ),
             child: Text('Checkout \$${TPricingCalculator.calculateTotalPrice(subTotal, 'US')}'),
           ),

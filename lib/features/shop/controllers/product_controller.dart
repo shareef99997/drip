@@ -72,6 +72,7 @@ class ProductController extends GetxController {
   /// -- Show Image Popup
   void showEnlargedImage(String image) {
     Get.to(
+      transition: Transition.fadeIn,
       fullscreenDialog: true,
       () => Dialog.fullscreen(
         child: SingleChildScrollView(

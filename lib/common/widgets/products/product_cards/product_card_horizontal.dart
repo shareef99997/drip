@@ -28,7 +28,7 @@ class TProductCardHorizontal extends StatelessWidget {
     final salePercentage = ProductController.instance.calculateSalePercentage(product.price, product.salePrice);
     final isDark = THelperFunctions.isDarkMode(context);
     return GestureDetector(
-      onTap: () => Get.to(() => ProductDetailScreen(product: product)),
+      onTap: () => Get.to(() => ProductDetailScreen(product: product),transition: Transition.fadeIn),
 
       /// Container with side paddings, color, edges, radius and shadow.
       child: Container(
@@ -145,7 +145,7 @@ class TProductCardHorizontal extends StatelessWidget {
                           if (product.productVariations == null) {
                             cartController.addSingleItemToCart(product, ProductVariationModel.empty());
                           } else {
-                            Get.to(() => ProductDetailScreen(product: product));
+                            Get.to(() => ProductDetailScreen(product: product),transition: Transition.fadeIn);
                           }
                         },
                         child: Obx(

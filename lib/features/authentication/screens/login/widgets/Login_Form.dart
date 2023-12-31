@@ -86,7 +86,7 @@ class FForm extends StatelessWidget {
                   /// Forget Passowrd ?
                   TextButton(
                     onPressed: () {
-                      Get.to(() => ForgetPassword());
+                      Get.to(() => ForgetPassword(),transition: Transition.fadeIn);
                     },
                     child: Text(
                       TTexts.forgetPassword,
@@ -123,7 +123,7 @@ class FForm extends StatelessWidget {
                 width: double.infinity,
                 child: OutlinedButton(
                   onPressed: () {
-                    Get.to(() => SignupScreen());
+                    Get.to(() => SignupScreen(),transition: Transition.fadeIn);
                   },
                   child: Text(
                     TTexts.createAccount,

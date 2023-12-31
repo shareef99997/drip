@@ -45,7 +45,7 @@ class AddressController extends GetxController {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(() => const AddNewAddressScreen()), child: const Text('Add new address')),
+                    onPressed: () => Get.to(() => const AddNewAddressScreen(),transition: Transition.fadeIn), child: const Text('Add new address')),
               ),
             ],
           ),

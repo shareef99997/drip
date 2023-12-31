@@ -43,7 +43,7 @@ class ForgetPasswordController extends GetxController {
 
       TLoaders.successSnackBar(title: 'Email Sent 📧', message: 'Email Link Sent to reset your password'.tr);
 
-      Get.to(() => ResetPassword(email: email.text.trim()));
+      Get.to(() => ResetPassword(email: email.text.trim()),transition: Transition.fadeIn);
 
     } catch (e) {
       //Remove Loader
