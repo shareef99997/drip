@@ -1,8 +1,11 @@
+import 'package:drip/features/personalization/controllers/address_controller.dart';
+import 'package:drip/features/shop/controllers/checkout_controller.dart';
 import 'package:drip/features/shop/screens/checkout/widgets/billing_address_section.dart';
 import 'package:drip/features/shop/screens/checkout/widgets/billing_payment_section.dart';
 import 'package:drip/home_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/custom_shapes/containers/rounded_container.dart';
@@ -23,6 +26,8 @@ class CheckoutScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final checkoutController = CheckoutController.instance;
+    final addressController = AddressController.instance;
     final cartController = CartController.instance;
     final subTotal = cartController.totalCartPrice.value;
     final dark = THelperFunctions.isDarkMode(context);
@@ -78,22 +83,48 @@ class CheckoutScreen extends StatelessWidget {
 
       /// -- Checkout Button
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(TSizes.defaultSpace),
+        padding: const EdgeInsets.only(bottom:TSizes.defaultSpace,right:TSizes.defaultSpace,left: TSizes.defaultSpace ),
         child: SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: () => Get.to(
-              () => SuccessScreen(
-                image: TImages.successfulPaymentIcon,
-                title: 'Payment Success!',
-                subTitle: 'Your item will be shipped soon!',
-                onPressed: () => Get.offAll(() => const HomeMenu(),transition: Transition.leftToRightWithFade),
-              ),transition: Transition.leftToRightWithFade
-            ),
-            child: Text('Checkout \$${TPricingCalculator.calculateTotalPrice(subTotal, 'US')}'),
+            onPressed: () => showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AlertDialog(
+                title: Text('Confirm Checkout'),
+                content: Text('Are you sure you want to proceed with the checkout?'),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.of(context).pop(); // Close the dialog
+                    },
+                    child: Text('Cancel'),
+                  ),
+                  SizedBox(width: 40,),
+                  SizedBox(
+                    width: 100,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop(); // Close the dialog
+                        // Perform the checkout action
+                        checkoutController.checkout(
+                          TPricingCalculator.calculateTotalPrice(subTotal, 'US'),
+                          addressController.selectedAddress.value.toString(),
+                          checkoutController.selectedPaymentMethod.value.name.toString(),
+                        );
+                      },
+                      child: Text('Checkout'),
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
+            child: Text('Checkout \$${TPricingCalculator.calculateTotalPrice(subTotal, 'US').toStringAsFixed(2)}'),
           ),
         ),
       ),
     );
   }
+
 }

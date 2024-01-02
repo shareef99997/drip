@@ -1,3 +1,6 @@
+import 'package:drip/features/shop/models/payment_method_model.dart';
+import 'package:get/get.dart';
+
 import '../../../routes/routes.dart';
 import '../../../utils/constants/enums.dart';
 import '../../../utils/constants/image_strings.dart';
@@ -116,39 +119,15 @@ class TDummyData {
   static final List<OrderModel> orders = [
     OrderModel(
         id: 'CWT0012',
-        status: OrderStatus.processing,
+        status: "pr",
         items: cart.items,
         totalAmount: 265,
         orderDate: DateTime(2023, 09, 1),
-        deliveryDate: DateTime(2023, 09, 9)),
-    OrderModel(
-        id: 'CWT0025',
-        status: OrderStatus.shipped,
-        items: cart.items,
-        totalAmount: 369,
-        orderDate: DateTime(2023, 10, 2),
-        deliveryDate: DateTime(2023, 10, 6)),
-    OrderModel(
-        id: 'CWT0152',
-        status: OrderStatus.delivered,
-        items: cart.items,
-        totalAmount: 254,
-        orderDate: DateTime(2023, 11, 3),
-        deliveryDate: DateTime(2023, 11, 8)),
-    OrderModel(
-        id: 'CWT0265',
-        status: OrderStatus.delivered,
-        items: cart.items,
-        totalAmount: 355,
-        orderDate: DateTime(2023, 12, 20),
-        deliveryDate: DateTime(2023, 12, 25)),
-    OrderModel(
-        id: 'CWT1536',
-        status: OrderStatus.delivered,
-        items: cart.items,
-        totalAmount: 115,
-        orderDate: DateTime(2023, 12, 25),
-        deliveryDate: DateTime(2024, 01, 1)),
+        deliveryDate: DateTime(2023, 09, 9),
+        selectedAddress:"", 
+        selectedPaymentMethod: ""
+        ),
+
   ];
 
   /// -- List of all Categories

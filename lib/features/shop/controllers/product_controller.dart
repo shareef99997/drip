@@ -101,11 +101,11 @@ class ProductController extends GetxController {
   /// -- Get Single Price Or Price Range in case of variations $5 - $29.99
   String getProductPrice(ProductModel product) {
     double smallestPrice = double.infinity;
-    double largestPrice = 0.0;
+    double largestPrice = 0.00;
 
     // If no variation exist return simple price OR sale price
     if (product.productVariations == null) {
-      return (product.salePrice ?? product.price).toString();
+      return (product.salePrice?.toStringAsFixed(2) ?? product.price.toStringAsFixed(2)).toString();
     } else {
       // Calculate the smallest and largest prices
       for (var variation in product.productVariations!) {
@@ -122,9 +122,9 @@ class ProductController extends GetxController {
       }
       // If smallest and largest are same. Return single price.
       if (smallestPrice.isEqual(largestPrice)) {
-        return largestPrice.toString();
+        return largestPrice.toStringAsFixed(2);
       } else {
-        return '$smallestPrice - \$$largestPrice';
+        return '${smallestPrice.toStringAsFixed(2)} - \$${largestPrice.toStringAsFixed(2)}';
       }
     }
   }

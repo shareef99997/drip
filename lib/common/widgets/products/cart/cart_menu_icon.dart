@@ -23,7 +23,7 @@ class TCartCounterIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     // Get an instance of the CartController
     final controller = CartController.instance;
-
+    controller.fetchCartItemsFromFirestore();
     // Check if the app is in dark mode
     final dark = THelperFunctions.isDarkMode(context);
 

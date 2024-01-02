@@ -20,6 +20,8 @@ class TCartItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartController = CartController.instance;
+        // Fetch cart items from Firestore when the widget is built
+    cartController.fetchCartItemsFromFirestore();
     final cartItems = cartController.cartItems;
     return Obx(
       () => ListView.separated(
@@ -65,7 +67,7 @@ class TCartItems extends StatelessWidget {
                         ),
 
                         /// -- Product total price
-                        TProductPriceText(price: productTotal.toString()),
+                        TProductPriceText(price: productTotal.toStringAsFixed(2)),
                       ],
                     )
                 ],

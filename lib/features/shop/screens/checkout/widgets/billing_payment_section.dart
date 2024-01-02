@@ -42,6 +42,8 @@ class TBillingPaymentSection extends StatelessWidget {
             ],
           ),
         ),
+        SizedBox(height: TSizes.spaceBtwItems),
+        Text("⚠️ the app dose not require any payment",style: Theme.of(context).textTheme.bodySmall)
       ],
     );
   }

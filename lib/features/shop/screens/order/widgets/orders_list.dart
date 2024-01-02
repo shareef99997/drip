@@ -37,12 +37,12 @@ class TOrderListItems extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          order.orderStatusText,
+                          order.id,
                           overflow: TextOverflow.ellipsis,
                           style:
                               Theme.of(context).textTheme.bodyLarge!.apply(color: TColors.primary, fontWeightDelta: 1),
                         ),
-                        Text(order.formattedOrderDate, style: Theme.of(context).textTheme.headlineSmall),
+                        Text(order.orderDate.toString(), style: Theme.of(context).textTheme.headlineSmall),
                       ],
                     ),
                   ),
@@ -110,7 +110,7 @@ class TOrderListItems extends StatelessWidget {
                                 style: Theme.of(context).textTheme.labelMedium,
                               ),
                               Text(
-                                order.formattedDeliveryDate,
+                                order.deliveryDate.toString(),
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: Theme.of(context).textTheme.titleMedium,

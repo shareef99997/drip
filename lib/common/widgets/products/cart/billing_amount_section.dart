@@ -16,7 +16,7 @@ class TBillingAmountSection extends StatelessWidget {
         Row(
           children: [
             Expanded(child: Text('Subtotal', style: Theme.of(context).textTheme.bodyMedium)),
-            Text('\$$subTotal', style: Theme.of(context).textTheme.bodyMedium),
+            Text('\$${subTotal.toStringAsFixed(2)}', style: Theme.of(context).textTheme.bodyMedium),
           ],
         ),
         const SizedBox(height: TSizes.spaceBtwItems / 2),
@@ -49,7 +49,7 @@ class TBillingAmountSection extends StatelessWidget {
         Row(
           children: [
             Expanded(child: Text('Order Total', style: Theme.of(context).textTheme.titleMedium)),
-            Text('\$${TPricingCalculator.calculateTotalPrice(subTotal, 'US')}',
+            Text('\$${TPricingCalculator.calculateTotalPrice(subTotal, 'US').toStringAsFixed(2)}',
                 style: Theme.of(context).textTheme.titleMedium),
           ],
         ),

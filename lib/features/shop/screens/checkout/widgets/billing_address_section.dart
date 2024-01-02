@@ -24,7 +24,13 @@ class TBillingAddressSection extends StatelessWidget {
         children: [
 
           TSectionHeading(title: 'Shipping Address', buttonTitle: 'Change', showActionButton: true, onPressed: () => addressController.selectNewAddress(context)),
-          Text(addressController.selectedAddress.value.name, style: Theme.of(context).textTheme.bodyLarge),
+          Row(
+            children: [
+              const Icon(Icons.location_history, color: Colors.grey, size: 16),
+              const SizedBox(width: TSizes.spaceBtwItems),
+              Text(addressController.selectedAddress.value.name, style: Theme.of(context).textTheme.titleLarge),
+            ],
+          ),
           const SizedBox(height: TSizes.spaceBtwItems/2),
           Row(
             children: [
@@ -36,9 +42,17 @@ class TBillingAddressSection extends StatelessWidget {
           const SizedBox(height: TSizes.spaceBtwItems/2),
           Row(
             children: [
-              const Icon(Icons.location_history, color: Colors.grey, size: 16),
+              const Icon(Icons.location_city_rounded, color: Colors.grey, size: 16),
               const SizedBox(width: TSizes.spaceBtwItems),
-              Expanded(child: Text(addressController.selectedAddress.value.toString(), style: Theme.of(context).textTheme.bodyMedium, softWrap: true)),
+              Expanded(child: Text(addressController.selectedAddress.value.country.toString()+", "+addressController.selectedAddress.value.state.toString()+", "+addressController.selectedAddress.value.city.toString(), style: Theme.of(context).textTheme.bodyMedium, softWrap: true)),
+            ],
+          ),
+          const SizedBox(height: TSizes.spaceBtwItems/2),
+          Row(
+            children: [
+              const Icon(Icons.drive_eta_outlined, color: Colors.grey, size: 16),
+              const SizedBox(width: TSizes.spaceBtwItems),
+              Expanded(child: Text(addressController.selectedAddress.value.street.toString()+", "+addressController.selectedAddress.value.postalCode.toString(), style: Theme.of(context).textTheme.bodyMedium, softWrap: true)),
             ],
           ),
         ],

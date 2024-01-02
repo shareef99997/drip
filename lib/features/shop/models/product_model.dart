@@ -19,6 +19,8 @@ class ProductModel {
   String productType;
   List<ProductAttributeModel>? productAttributes;
   List<ProductVariationModel>? productVariations;
+  // Modify the 'price' property to be formatted as a string in "0.00" format
+  
 
   ProductModel({
     required this.id,
@@ -42,5 +44,4 @@ class ProductModel {
   /// Create Empty func for clean code
   static ProductModel empty() => ProductModel(id: '', title: '', stock: 0, price: 0, thumbnail: '', productType: '');
 
-  /// Map Json oriented document snapshot from Firebase to Model
 }

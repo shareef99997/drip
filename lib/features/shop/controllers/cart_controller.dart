@@ -25,9 +25,6 @@ class CartController extends GetxController {
   /// -- Used init to initialize dummy data only
   @override
   void onInit() {
- 
-
-        // Check if the user is signed in before accessing the UID
         // Check if the user is signed in before accessing the UID
         if (FirebaseAuth.instance.currentUser != null) {
           userUid = FirebaseAuth.instance.currentUser!.uid;
@@ -35,40 +32,41 @@ class CartController extends GetxController {
           // Fetch cart items from Firestore
           fetchCartItemsFromFirestore();
         }
+        
     super.onInit();
   }
 
-Future<List<CartItemModel>> getCartItemsFromFirestore() async {
-  List<CartItemModel> cartItems = [];
+  Future<List<CartItemModel>> getCartItemsFromFirestore() async {
+    List<CartItemModel> cartItems = [];
 
-  try {
-    final DocumentReference cartDocRef = _firestore.collection(_cartCollection).doc(userUid);
-    final CollectionReference cartItemsCollectionRef = cartDocRef.collection('items');
+    try {
+      final DocumentReference cartDocRef = _firestore.collection(_cartCollection).doc(userUid);
+      final CollectionReference cartItemsCollectionRef = cartDocRef.collection('items');
 
-    final QuerySnapshot querySnapshot = await cartItemsCollectionRef.get();
+      final QuerySnapshot querySnapshot = await cartItemsCollectionRef.get();
 
-    // Process documents to populate cartItems
-    cartItems = querySnapshot.docs.map((doc) {
-      return CartItemModel(
-        productId: doc['productId'],
-        variationId: doc['variationId'],
-        quantity: doc['quantity'],
-        title: doc['title'],
-        image: doc['image'],
-        price: doc['price'],
-        brandName: doc['brandName'],
-        // Add other fields as needed...
-      );
-    }).toList();
+      // Process documents to populate cartItems
+      cartItems = querySnapshot.docs.map((doc) {
+        return CartItemModel(
+          productId: doc['productId'],
+          variationId: doc['variationId'],
+          quantity: doc['quantity'],
+          title: doc['title'],
+          image: doc['image'],
+          price: doc['price'],
+          brandName: doc['brandName'],
+          // Add other fields as needed...
+        );
+      }).toList();
 
-    print('Cart items fetched from Firestore.');
+      print('Cart items fetched from Firestore.');
 
-  } catch (e) {
-    print('Error fetching cart items from Firestore: $e');
+    } catch (e) {
+      print('Error fetching cart items from Firestore: $e');
+    }
+
+    return cartItems;
   }
-
-  return cartItems;
-}
 
 
  /// Fetch cart items from Firestore
@@ -182,7 +180,7 @@ Future<List<CartItemModel>> getCartItemsFromFirestore() async {
           'quantity': cartItem.quantity,
           'title': cartItem.title,
           'image': cartItem.image,
-          'price': cartItem.price,
+          'price': cartItem.price?.toDouble(),
           'brandName': cartItem.brandName,
           // Add other fields as needed...
         });
@@ -306,48 +304,48 @@ Future<List<CartItemModel>> getCartItemsFromFirestore() async {
   }
 
 
-Future<void> updateCartItemQuantity(CartItemModel cartItem, int newQuantity) async {
-  try {
-    final DocumentReference cartDocRef = _firestore.collection(_cartCollection).doc(userUid);
-    final CollectionReference cartItemsCollectionRef = cartDocRef.collection('items');
+  Future<void> updateCartItemQuantity(CartItemModel cartItem, int newQuantity) async {
+    try {
+      final DocumentReference cartDocRef = _firestore.collection(_cartCollection).doc(userUid);
+      final CollectionReference cartItemsCollectionRef = cartDocRef.collection('items');
 
-    if (newQuantity > 0) {
-      // Find the existing cart item document
-      final QuerySnapshot querySnapshot = await cartItemsCollectionRef
-          .where('productId', isEqualTo: cartItem.productId)
-          .where('variationId', isEqualTo: cartItem.variationId)
-          .get();
+      if (newQuantity > 0) {
+        // Find the existing cart item document
+        final QuerySnapshot querySnapshot = await cartItemsCollectionRef
+            .where('productId', isEqualTo: cartItem.productId)
+            .where('variationId', isEqualTo: cartItem.variationId)
+            .get();
 
-      if (querySnapshot.docs.isNotEmpty) {
-        final DocumentSnapshot cartItemDocSnapshot = querySnapshot.docs.first;
+        if (querySnapshot.docs.isNotEmpty) {
+          final DocumentSnapshot cartItemDocSnapshot = querySnapshot.docs.first;
 
-        // Update the quantity field directly with the new value
-        await cartItemDocSnapshot.reference.update({'quantity': newQuantity});
+          // Update the quantity field directly with the new value
+          await cartItemDocSnapshot.reference.update({'quantity': newQuantity});
 
-        // Update the local cartItem quantity
-        cartItem.quantity = newQuantity;
-        cartItems.refresh(); // Refresh the UI
+          // Update the local cartItem quantity
+          cartItem.quantity = newQuantity;
+          cartItems.refresh(); // Refresh the UI
+        } else {
+          print('Cart item not found in Firestore.');
+        }
       } else {
-        print('Cart item not found in Firestore.');
+        // If the new quantity is less than 1, remove the item from Firestore and local list
+        await removeItemFromFirestore(cartItem);
+        cartItems.remove(cartItem);
+        totalCartPrice.value -= calculateSingleProductTotal(cartItem.price!, cartItem.quantity);
+        cartItems.refresh(); // Refresh the UI
       }
-    } else {
-      // If the new quantity is less than 1, remove the item from Firestore and local list
-      await removeItemFromFirestore(cartItem);
-      cartItems.remove(cartItem);
-      totalCartPrice.value -= calculateSingleProductTotal(cartItem.price!, cartItem.quantity);
-      cartItems.refresh(); // Refresh the UI
+
+      // Update the total cart price
+      totalCartPrice.value = cartItems
+          .map((e) => calculateSingleProductTotal(e.price!, e.quantity))
+          .fold(0, (previous, current) => previous + current);
+
+      print('Cart item quantity updated in Firestore.');
+    } catch (e) {
+      print('Error updating cart item quantity in Firestore: $e');
     }
-
-    // Update the total cart price
-    totalCartPrice.value = cartItems
-        .map((e) => calculateSingleProductTotal(e.price!, e.quantity))
-        .fold(0, (previous, current) => previous + current);
-
-    print('Cart item quantity updated in Firestore.');
-  } catch (e) {
-    print('Error updating cart item quantity in Firestore: $e');
   }
-}
 
 
 
@@ -363,6 +361,7 @@ Future<void> updateCartItemQuantity(CartItemModel cartItem, int newQuantity) asy
   }
 
   String calculateTotalCartItems() {
+    
     return cartItems
         .map((element) => element.quantity)
         .fold(0, (previousValue, element) => previousValue + element)

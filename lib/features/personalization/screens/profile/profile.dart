@@ -3,13 +3,10 @@ import 'package:drip/features/personalization/controllers/user_controller.dart';
 import 'package:drip/features/personalization/screens/profile/change_password.dart';
 import 'package:drip/features/personalization/screens/profile/change_phonenumber.dart';
 import 'package:drip/features/personalization/screens/profile/widgets/profile_menu.dart';
-import 'package:drip/features/personalization/screens/setting/settings.dart';
 import 'package:drip/home_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../common/widgets/images/t_circular_image.dart';
@@ -67,7 +64,7 @@ class ProfileScreen extends StatelessWidget {
               const SizedBox(height: TSizes.spaceBtwItems),
               const TSectionHeading(title: 'Personal Information', showActionButton: false),
               const SizedBox(height: TSizes.spaceBtwItems),
-              TProfileMenu(onPressed: () {_copyToClipboard(controller.user.value.id);}, title: 'User ID', value: controller.user.value.id, icon: Iconsax.copy),
+              TProfileMenu(onPressed: () {}, title: 'User ID', value: controller.user.value.id, icon: Iconsax.copy),
               TProfileMenu(onPressed: () {}, title: 'E-mail', value: controller.user.value.email,icon: Icons.mail_outline,),
               TProfileMenu(onPressed: () => Get.to(() => const ChangePhoneNumber(),transition: Transition.leftToRightWithFade), title: 'Phone Number', value: controller.user.value.phoneNumber),
               const Divider(),
@@ -82,21 +79,6 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-  void _copyToClipboard(String text) {
-    Clipboard.setData(ClipboardData(text: text));
-    showToast("User ID copied to clipboard");
-  }
 
-  void showToast(String message) {
-    Fluttertoast.showToast(
-      msg: message,
-      toastLength: Toast.LENGTH_SHORT,
-      gravity: ToastGravity.BOTTOM,
-      timeInSecForIosWeb: 1,
-      backgroundColor: Colors.grey,
-      textColor: Colors.white,
-      fontSize: 16.0,
-    );
-  }
 }
 

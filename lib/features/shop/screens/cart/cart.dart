@@ -32,7 +32,7 @@ class CartScreen extends StatelessWidget {
           width: double.infinity,
           child: ElevatedButton(
             onPressed: () => Get.to(() => const CheckoutScreen(),transition: Transition.leftToRightWithFade),
-            child: Obx(() => Text('Checkout ${controller.totalCartPrice.value}')),
+            child: Obx(() => Text('Checkout ${controller.totalCartPrice.value.toStringAsFixed(2)}')),
           ),
         ),
       ),
