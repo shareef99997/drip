@@ -7,7 +7,14 @@ import 'dummy_data.dart';
 class HomeController extends GetxController {
   static HomeController get instance => Get.find();
 
+ 
   final carousalCurrentIndex = 0.obs;
+
+  @override
+  Future<void> onInit() async {
+    
+    super.onInit();
+  }
 
   void updatePageIndicator(index) {
     carousalCurrentIndex.value = index;

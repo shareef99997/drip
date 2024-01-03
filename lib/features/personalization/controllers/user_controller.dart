@@ -30,7 +30,7 @@ class UserController extends GetxController{
   GlobalKey<FormState> reAuthFormKey = GlobalKey<FormState>();
 
   @override
-  void onInit(){
+  void onInit() {
     super.onInit();
     fetchUserRecord();
   }

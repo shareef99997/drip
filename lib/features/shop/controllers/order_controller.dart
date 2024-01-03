@@ -29,8 +29,12 @@ class OrderController extends GetxController {
         isLoading.value = true; // Set loading to true while fetching orders
         orders.assignAll(await fetchOrders());
       }
+    } catch (e) {
+      print('Error fetching Orders from Firestore: $e');
     } finally {
-      isLoading.value = false; // Set loading to false when orders are fetched
+      isLoading.value = false; // Set loading to false when orders are fetched or an error occurs
+      print("stop loading");
+      print(orders.toString());
       super.onInit();
     }
   }
@@ -83,6 +87,7 @@ class OrderController extends GetxController {
       }
 
       print('Orders fetched from Firestore.');
+      print(orders.length);
       update(); // Notify observers to update the UI
     } catch (e) {
       print('Error fetching Orders from Firestore: $e');

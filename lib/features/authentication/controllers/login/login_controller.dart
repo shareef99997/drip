@@ -58,9 +58,9 @@ class LoginController extends GetxController {
 
       // User Login
       final userCredentials = await AuthenticationRepository.instance.loginWithEmailAndPassword(email.text.trim(), password.text.trim());
-      
+      await UserController.instance.fetchUserRecord();
       TFullScreenLoader.stopLoading();
-
+      
       AuthenticationRepository.instance.screenRedirect();
 
     } catch (e) {
@@ -93,14 +93,14 @@ class LoginController extends GetxController {
 
       // User Login
       final userCredentials = await AuthenticationRepository.instance.signInWithGoogle();
+      
 
       // Save User Record
       await userController.saveUserRecord(userCredentials);
       
       // Remove Loader
       TFullScreenLoader.stopLoading();
-
-      
+      await UserController.instance.fetchUserRecord();
       AuthenticationRepository.instance.screenRedirect();
 
     } catch (e) {

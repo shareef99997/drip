@@ -41,6 +41,7 @@ class HomeMenu extends StatelessWidget {
 
 class AppScreenController extends GetxController {
   static AppScreenController get instance => Get.find();
+  
 
   final Rx<int> selectedMenu = 0.obs;
 

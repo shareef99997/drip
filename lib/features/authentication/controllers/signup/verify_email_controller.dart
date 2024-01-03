@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:drip/common/widgets/success_screen/success_screen.dart';
 import 'package:drip/data/repositories/authentication/authentication_repository.dart';
 import 'package:drip/features/authentication/screens/login/login.dart';
+import 'package:drip/features/personalization/controllers/user_controller.dart';
 import 'package:drip/utils/constants/image_strings.dart';
 import 'package:drip/utils/constants/text_strings.dart';
 import 'package:drip/utils/popups/full_screen_loader.dart';
@@ -41,6 +42,7 @@ class VerifyEmailController extends GetxController {
      final user = FirebaseAuth.instance.currentUser;
      if (user?.emailVerified ?? false) {
        timer.cancel();
+       await UserController.instance.fetchUserRecord();
        Get.off(
           () => SuccessScreen(
               image: TImages.staticSuccessIllustration,
