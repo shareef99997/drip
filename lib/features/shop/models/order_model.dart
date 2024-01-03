@@ -11,10 +11,11 @@ class OrderModel {
   final double totalAmount;
   final String status;
   final DateTime orderDate;
-  final DateTime? deliveryDate;
+  final DateTime deliveryDate;
   final List<CartItemModel> items;
   final String selectedAddress;
   final String selectedPaymentMethod;
+  final String selectedPaymentImage;
 
   OrderModel({
     required this.status, 
@@ -25,6 +26,7 @@ class OrderModel {
     required this.selectedAddress,
     required this.selectedPaymentMethod,
     required this.deliveryDate,
+    required this.selectedPaymentImage,
 
   });
 

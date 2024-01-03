@@ -31,7 +31,16 @@ class CartScreen extends StatelessWidget {
         child: SizedBox(
           width: double.infinity,
           child: ElevatedButton(
-            onPressed: () => Get.to(() => const CheckoutScreen(),transition: Transition.leftToRightWithFade),
+           onPressed: () {
+              // Check if there are items in the cart
+              if (controller.cartItems.isEmpty) {
+                // Show Snackbar if the cart is empty
+                Get.snackbar('Empty Cart', 'Your cart is empty.');
+              } else {
+                // Navigate to CheckoutScreen if the cart has items
+                Get.to(() => const CheckoutScreen(), transition: Transition.leftToRightWithFade);
+              }
+            },
             child: Obx(() => Text('Checkout ${controller.totalCartPrice.value.toStringAsFixed(2)}')),
           ),
         ),

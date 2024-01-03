@@ -20,8 +20,8 @@ class TCartItems extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartController = CartController.instance;
-        // Fetch cart items from Firestore when the widget is built
-    cartController.fetchCartItemsFromFirestore();
+    // Fetch cart items from Firestore when the widget is built
+    
     final cartItems = cartController.cartItems;
     return Obx(
       () => ListView.separated(

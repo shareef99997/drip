@@ -111,6 +111,8 @@ class CheckoutScreen extends StatelessWidget {
                           TPricingCalculator.calculateTotalPrice(subTotal, 'US'),
                           addressController.selectedAddress.value.toString(),
                           checkoutController.selectedPaymentMethod.value.name.toString(),
+                          checkoutController.selectedPaymentMethod.value.image.toString(),
+
                         );
                       },
                       child: Text('Checkout'),

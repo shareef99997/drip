@@ -27,7 +27,7 @@ class CheckoutController extends GetxController {
   RxList<CartItemModel> cartItems = <CartItemModel>[].obs;
   Rx<AddressModel> selectedAddress = AddressModel.empty().obs;
   late DateTime checkoutDateTime;
-  final String status = "processing";
+  final String status = "Processing ";
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   String? userUid = FirebaseAuth.instance.currentUser?.uid; 
   
@@ -142,6 +142,7 @@ class CheckoutController extends GetxController {
         'totalAmount': order.totalAmount,
         'selectedAddress': order.selectedAddress,
         'selectedPaymentMethod': order.selectedPaymentMethod,
+        'selectedPaymentImage': order.selectedPaymentImage,
       });
 
       // Save cart items to the "items" subcollection of the generated document ID
@@ -170,8 +171,8 @@ class CheckoutController extends GetxController {
     
     double totalAmount,
     String address,
-    String paymentMethod
-
+    String paymentMethod,
+    String paymentImage,
   ) async {
     try {
 
@@ -191,7 +192,7 @@ class CheckoutController extends GetxController {
       List<CartItemModel> cartItemsFromFirestore = await getCartItemsFromFirestore();
 
       // Generate a random 5-digit order number starting with "drip"
-      String id = 'drip${Random().nextInt(90000) + 10000}';
+      String id = 'dr${Random().nextInt(90000) + 10000}';
 
       // Create an order object with the necessary details
       OrderModel order = OrderModel(
@@ -203,6 +204,7 @@ class CheckoutController extends GetxController {
         totalAmount: totalAmount, 
         selectedAddress: address,
         selectedPaymentMethod: paymentMethod,
+        selectedPaymentImage: paymentImage
       );
 
       // Save the order to Firestore

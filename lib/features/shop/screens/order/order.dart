@@ -1,6 +1,5 @@
 import 'package:drip/features/shop/screens/order/widgets/orders_list.dart';
 import 'package:flutter/material.dart';
-
 import '../../../../common/widgets/appbar/appbar.dart';
 import '../../../../utils/constants/sizes.dart';
 

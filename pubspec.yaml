@@ -10,6 +10,7 @@ environment:
 
 #-------------- PACKAGES ------------------#
 dependencies:
+  animated_switch: ^0.0.3
   cached_network_image: ^3.3.0
   capped_progress_indicator: ^0.0.2
   carousel_slider: ^4.2.1
@@ -24,6 +25,7 @@ dependencies:
   flutter_native_splash: ^2.3.7
   flutter_rating_bar: ^4.0.1
   flutter_svg: ^2.0.9
+  flutter_switch_dark_light: ^0.0.4
   get: ^4.6.6
   get_storage: ^2.1.1
   google_sign_in: ^6.2.1

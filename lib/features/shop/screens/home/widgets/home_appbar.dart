@@ -12,6 +12,14 @@ class THomeAppBar extends StatelessWidget {
   const THomeAppBar({
     super.key,
   });
+   // Method to toggle between light and dark themes
+  void toggleTheme() {
+    if (Get.isDarkMode) {
+      Get.changeThemeMode(ThemeMode.light);
+    } else {
+      Get.changeThemeMode(ThemeMode.dark);
+    }
+  }
 
   // Home Appbar
   @override
@@ -35,7 +43,39 @@ class THomeAppBar extends StatelessWidget {
         ),
       ),
       // Cart Icon
-      actions: const [TCartCounterIcon(iconColor: TColors.white, counterBgColor: TColors.black, counterTextColor: TColors.white)],
+      actions: [
+        Builder(
+          builder: (BuildContext buttonContext) {
+            return Container(
+              child: ElevatedButton(
+                onPressed: () => toggleTheme(),
+                style: ElevatedButton.styleFrom(
+                  primary: Get.isDarkMode ? Colors.grey[800] : Color.fromARGB(255, 255, 255, 255), // Adjust colors based on your design
+                ),
+                child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 7),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Get.isDarkMode ? Icons.nightlight_round : Icons.wb_sunny,
+                        size: 20,
+                        color: Get.isDarkMode ? Colors.white : Colors.black,
+                      ),
+                      SizedBox(width: 8),
+                      Text(
+                        Get.isDarkMode ? 'Light' : 'Dark',
+                        style: TextStyle(fontSize: 15,color: Get.isDarkMode ? Colors.white : Colors.black),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+        const TCartCounterIcon(iconColor: TColors.white, counterBgColor: TColors.black, counterTextColor: TColors.white),
+      
+      ],
     );
   }
 }

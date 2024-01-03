@@ -125,7 +125,8 @@ class TDummyData {
         orderDate: DateTime(2023, 09, 1),
         deliveryDate: DateTime(2023, 09, 9),
         selectedAddress:"", 
-        selectedPaymentMethod: ""
+        selectedPaymentMethod: "",
+        selectedPaymentImage: ""
         ),
 
   ];

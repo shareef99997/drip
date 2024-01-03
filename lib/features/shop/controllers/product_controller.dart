@@ -26,6 +26,7 @@ class ProductController extends GetxController {
   void onInit() {
     // Initialize your products from Firestore, SQL, Firebase, Local Storage etc
     products.value = TDummyData.products;
+    
     super.onInit();
   }
 
@@ -215,10 +216,13 @@ class ProductController extends GetxController {
   void addProductToCart(ProductModel product) {
     // Product do not have any variations, Simply add to cart
     if (product.productVariations == null) {
+      print('1======variation is null so add multible items to cart');
       CartController.instance.addMultipleItemsToCart(product, ProductVariationModel.empty(), cartQuantity.value);
       Get.back();
     } else {
+      
       final variation = selectedVariation.value;
+      print('1======');
       if (variation.id.isEmpty) {
         Get.snackbar(
             'Select Variation', 'To add items in the cart you first have to select a Variation of this product.',

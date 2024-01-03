@@ -45,6 +45,7 @@ class TImages {
   static const String docerAnimation = "assets/images/animations/process.gif";
   static const String lockAnimation = "assets/images/animations/process.gif";
   static const String order = "assets/images/animations/process.gif";
+  static const String getorder = "assets/images/animations/order.gif";
 
 
   // -- OnBoarding Texts
