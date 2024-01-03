@@ -1,3 +1,4 @@
+import 'package:drip/utils/helpers/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/colors.dart';
@@ -21,7 +22,6 @@ class AttributeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
 
     // Pass the variations to check which attributes are available and stock is not 0
     final availableVariationValues = variations
@@ -54,9 +54,9 @@ class AttributeWidget extends StatelessWidget {
                   if (selected && isAvailable) onValueSelected(value);
                 },
                 selectedColor: TColors.primary,
-                labelStyle: TextStyle(color: isSelected ? Colors.white : (isAvailable ? isDark ? TColors.white : TColors.dark : isDark ? Colors.white30 :Colors.grey)),
+                labelStyle: TextStyle(color: isSelected ? Colors.white : (isAvailable ? THelperFunctions.isDarkMode(context) ? TColors.white : TColors.dark : THelperFunctions.isDarkMode(context) ? Colors.white30 :Colors.grey)),
                 elevation: isSelected ? 5.0 : 0.0,
-                backgroundColor: isSelected ? TColors.primary : (isAvailable ? Colors.transparent : isDark ? TColors.dark : Colors.grey.shade200),
+                backgroundColor: isSelected ? TColors.primary : (isAvailable ? Colors.transparent : THelperFunctions.isDarkMode(context) ? TColors.dark : Colors.grey.shade200),
                 iconTheme: IconThemeData(color: isSelected ? Colors.white : Colors.black, size: 18),
                 padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
               ),

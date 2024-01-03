@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:drip/common/widgets/success_screen/success_screen.dart';
 import 'package:drip/features/personalization/models/address_model.dart';
+import 'package:drip/features/shop/controllers/cart_controller.dart';
 import 'package:drip/features/shop/models/cart_item_model.dart';
 import 'package:drip/features/shop/models/order_model.dart';
 import 'package:drip/home_menu.dart';
@@ -54,6 +55,7 @@ class CheckoutController extends GetxController {
 
       // Clear the local cartItems state
       cartItems.clear();
+      CartController.instance.cartItems.clear();
 
       print('Cart items cleared after order placement.');
     } catch (e) {

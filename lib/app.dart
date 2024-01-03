@@ -19,7 +19,7 @@ class App extends StatelessWidget {
         BuildContext context, Widget? child) {
             return MediaQuery(
               data: MediaQuery.of(context).copyWith(
-                textScaleFactor: 1.05, // Set the desired text scale factor here
+                textScaleFactor: 1.0, // Set the desired text scale factor here
               ),
               child: child!,
             );

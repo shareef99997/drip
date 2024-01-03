@@ -77,8 +77,7 @@ class CartController extends GetxController {
 
     final QuerySnapshot querySnapshot = await cartItemsCollectionRef.get();
 
-    // Clear existing cart items
-    cartItems.clear();
+    
 
     // Process documents to populate cartItems
     querySnapshot.docs.forEach((doc) {

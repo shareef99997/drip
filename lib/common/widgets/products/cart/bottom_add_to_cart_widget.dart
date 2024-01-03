@@ -49,11 +49,11 @@ class TBottomAddToCart extends StatelessWidget {
                   productController.cartQuantity.value < 1 ? null : () => productController.addProductToCart(product),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.all(TSizes.md),
-                backgroundColor: TColors.black,
+                backgroundColor:TColors.black,
                 side: const BorderSide(color: TColors.black),
               ),
-              child: const Row(
-                children: [Icon(Iconsax.shopping_bag), SizedBox(width: TSizes.spaceBtwItems / 2), Text('Add to Bag')],
+              child:  const Row(
+                children: [Icon(Iconsax.shopping_bag,color: Colors.white), SizedBox(width: TSizes.spaceBtwItems / 2), Text('Add to Bag',style: TextStyle(color: Colors.white))],
               ),
             ),
           ],

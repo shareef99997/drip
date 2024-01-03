@@ -5,6 +5,7 @@ import 'package:drip/features/shop/models/order_model.dart';
 import 'package:drip/features/shop/screens/order/widgets/Loading_orders.dart';
 import 'package:drip/features/shop/screens/order/widgets/order_item.dart';
 import 'package:drip/utils/constants/image_strings.dart';
+import 'package:drip/utils/device/device_utility.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
@@ -204,7 +205,7 @@ class TOrderListItems extends StatelessWidget {
         return AlertDialog(
           title: Text('Order Details 🧾'),
           content: Container(
-            width: 500,
+            width: MediaQuery.of(context).size.width-10,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -249,9 +250,11 @@ class TOrderListItems extends StatelessWidget {
                 // Display each item in a Column
                 Container(
                   decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),color: Color.fromARGB(29, 0, 0, 0),),
-                  padding: EdgeInsets.all(20),
+                  padding: EdgeInsets.all(10),
                   height: 350,
+                  
                   child: SingleChildScrollView(
+                    
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [

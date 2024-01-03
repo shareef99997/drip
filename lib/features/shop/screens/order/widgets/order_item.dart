@@ -28,13 +28,13 @@ class TOrderItem extends StatelessWidget {
           children: [
             /// 1 - Image
             TRoundedImage(
-              width: 60,
-              height: 60,
+              width: 50,
+              height: 50,
               imageUrl: item.image ?? '',
               padding: const EdgeInsets.all(TSizes.sm),
               backgroundColor: dark ? TColors.darkerGrey : TColors.light,
             ),
-            const SizedBox(width: TSizes.spaceBtwItems),
+            const SizedBox(width: TSizes.spaceBtwItems-6),
 
             /// 2 - Title, Price, & Size
             Expanded(
@@ -47,30 +47,37 @@ class TOrderItem extends StatelessWidget {
                   Flexible(child: TProductTitleText(title: item.title ?? '', maxLines: 1)),
 
                   /// Attributes
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Quantity: ',
-                        style:  Theme.of(context).textTheme.bodySmall ,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                      Text(
-                        item.quantity.toString(),
-                        style:  Theme.of(context).textTheme.titleMedium ,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                      Spacer(),
-                      Text(
-                        "\$"+item.price!.toStringAsFixed(2),
-                        style:  Theme.of(context).textTheme.titleLarge ,
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                    ],
+                  Flexible(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Text(
+                          'Quantity: ',
+                          style:  Theme.of(context).textTheme.bodySmall ,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                        Text(
+                          item.quantity.toString(),
+                          style:  Theme.of(context).textTheme.titleMedium ,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                          ],
+                        ),
+                        
+                        Text(
+                          "\$"+item.price!.toStringAsFixed(2),
+                          style:  Theme.of(context).textTheme.titleMedium ,
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1,
+                        ),
+                      ],
+                    ),
                   )
+                
                 ],
               ),
             ),
