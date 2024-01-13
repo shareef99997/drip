@@ -26,18 +26,6 @@ class TSocialButtons extends StatelessWidget {
             ),
           ),
         ),
-        const SizedBox(width: TSizes.spaceBtwItems),
-        Container(
-          decoration: BoxDecoration(border: Border.all(color: const Color.fromARGB(172, 224, 224, 224)), borderRadius: BorderRadius.circular(100)),
-          child: IconButton(
-            onPressed: () {},
-            icon: const Image(
-              width: TSizes.iconMd+10,
-              height: TSizes.iconMd+10,
-              image: AssetImage(TImages.facebook),
-            ),
-          ),
-        ),
       ],
     );
   }
