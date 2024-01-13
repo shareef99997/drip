@@ -29,7 +29,7 @@ class LoginScreen extends StatelessWidget {
               ///  Form  
               FForm(),
               /// Footer
-              Footer(),
+
             ]
             ),
         ),

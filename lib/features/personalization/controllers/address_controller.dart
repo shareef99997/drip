@@ -41,13 +41,14 @@ class AddressController extends GetxController {
   @override
   void onInit() {
     _initializeDefaultAddress();
+
     super.onInit();
   }
   
   Future<void> _initializeDefaultAddress() async {
     try {
       final addresses = await getAddresses();
-      if (addresses.isNotEmpty) {
+      if (addresses != null && addresses.isNotEmpty) {
         selectedAddress.value = addresses[0];
       }
     } catch (e) {
@@ -119,7 +120,7 @@ class AddressController extends GetxController {
 
   // Fetch addresses from Firestore
   Future<List<AddressModel>> getAddresses() async {
-    try {
+  try {
     final querySnapshot = await _addressesCollection.doc(userUid).collection('user_addresses').get();
 
     if (querySnapshot.docs.isNotEmpty) {
@@ -128,13 +129,14 @@ class AddressController extends GetxController {
           .toList();
 
       return addresses;
+    } else {
+      return []; // Return an empty list when there are no addresses
     }
-    } catch (e) {
-      TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
-    }
-
+  } catch (e) {
+    TLoaders.errorSnackBar(title: 'Oh Snap!', message: e.toString());
     return [];
   }
+}
 
   Future<void> selectNewAddress(BuildContext context) async {
     try {
