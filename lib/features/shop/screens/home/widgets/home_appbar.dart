@@ -50,7 +50,7 @@ class THomeAppBar extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () => toggleTheme(),
                 style: ElevatedButton.styleFrom(
-                  primary: Get.isDarkMode ? Colors.grey[800] : Color.fromARGB(255, 255, 255, 255), // Adjust colors based on your design
+                  backgroundColor: Get.isDarkMode ? Colors.grey[800] : Color.fromARGB(255, 255, 255, 255), // Adjust colors based on your design
                 ),
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: 7),
